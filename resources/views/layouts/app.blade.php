@@ -15,11 +15,12 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/api.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
+        <x-navbar />
         <div class="min-h-screen bg-gray-100">
             @if (Auth::check())
                 @livewire('navigation-menu')
@@ -38,6 +39,7 @@
                 @yield('content')
             </main>
         </div>
+        <x-footer />
 
         @stack('modals')
 

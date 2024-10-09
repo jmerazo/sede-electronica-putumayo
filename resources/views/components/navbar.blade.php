@@ -128,7 +128,7 @@
         }
     }
 
-    /* Estilos para el menú de navegación inferior */
+    /* Contenedor principal del navbar */
     .navbar-bottom {
         background-color: var(--govco-gray-color);
         padding: 1rem 2rem;
@@ -136,50 +136,85 @@
         font-family: var(--govco-font-primary);
     }
 
-    .navbar-bottom .nav-links {
+    /* Estilos para el contenedor de enlaces */
+    .nav-links {
         display: flex;
         justify-content: center;
         gap: 2rem;
     }
 
-    .navbar-bottom .nav-links a {
+    /* Estilo de cada enlace del menú principal */
+    .menu-item {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Estilos para los enlaces de menú */
+    .menu-item > a {
         color: var(--govco-secondary-color);
         font-size: 0.95rem;
         font-weight: 500;
         text-decoration: none;
-        transition: color 0.3s ease, border-bottom 0.3s ease;
-        position: relative;
         padding-bottom: 0.5rem;
+        transition: color 0.3s ease;
     }
 
-    .navbar-bottom .nav-links a:hover {
+    /* Efecto hover en los enlaces de menú */
+    .menu-item > a:hover {
         color: var(--govco-highlight-color);
     }
 
-    .navbar-bottom .nav-links a::after {
-        content: "";
-        display: block;
-        width: 0;
-        height: 2px;
-        background: var(--govco-highlight-color);
-        transition: width 0.3s;
-        margin: 0 auto;
+    /* Estilos para el contenedor de submenús */
+    .submenu {
+        display: none;
         position: absolute;
+        top: 100%;
         left: 0;
-        bottom: 0;
-        right: 0;
+        background-color: var(--govco-white-color);
+        border: 1px solid var(--govco-border-color);
+        border-radius: 5px;
+        padding: 0.5rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
     }
 
-    .navbar-bottom .nav-links a:hover::after {
-        width: 100%;
+    /* Estilos para los enlaces de submenús */
+    .submenu a {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: var(--govco-primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
     }
 
-    /* Responsive: para pantallas pequeñas */
+    /* Efecto hover en los enlaces de submenús */
+    .submenu a:hover {
+        background-color: var(--govco-gray-color);
+        color: var(--govco-highlight-color);
+    }
+
+    /* Mostrar el submenú al pasar el mouse sobre el elemento del menú principal */
+    .menu-item:hover .submenu {
+        display: block;
+    }
+
+    /* Responsive: alineación vertical en pantallas pequeñas */
     @media (max-width: 768px) {
-        .navbar-bottom .nav-links {
+        .nav-links {
             flex-direction: column;
             align-items: center;
             gap: 1rem;
+        }
+        
+        .submenu {
+            position: static;
+            box-shadow: none;
+            border: none;
+            background-color: transparent;
+        }
+
+        .submenu a {
+            padding: 0.5rem 0;
         }
     }
 </style>
@@ -195,7 +230,7 @@
     <div class="actions">
         <!-- Botón de cambio de idioma -->
         <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">
-            {{ App::getLocale() === 'es' ? 'EN' : 'ES' }}
+            {{ __('navbar.language') }}
         </button>
     </div>
 </div>
@@ -208,25 +243,18 @@
     </div>
     
     <div class="search-bar">
-        <input type="text" placeholder="Buscar...">
+        <input type="text" placeholder="{{ __('navbar.search_placeholder') }}">
         <button type="submit">
-            <img src="/icons/search-icon.svg" alt="Buscar" width="16" height="16">
+            <img src="/icons/search-icon.svg" alt="{{ __('navbar.search_placeholder') }}" width="16" height="16">
         </button>
     </div>
     <div>
-        <a href="{{ route('login') }}" class="login-btn">Iniciar Sesión</a>
+        <a href="{{ route('login') }}" class="login-btn">{{ __('navbar.login') }}</a>
     </div>
 </nav>
 
 <div class="navbar-bottom">
-    <div class="nav-links">
-        <a href="#home">Inicio</a>
-        <a href="#transparency">Transparencia y Acceso Información Pública</a>
-        <a href="#services">Atención y Servicios a la Ciudadanía</a>
-        <a href="#tramites">Trámites y Servicios</a>
-        <a href="#participa">Participa</a>
-        <a href="#normatividad">Normatividad</a>
-    </div>
+    <div id="nav-links" class="nav-links"></div>
 </div>
 
 <script>
@@ -240,4 +268,47 @@
         // Redirecciona a la ruta para cambiar el idioma
         window.location.href = `/set-locale/${newLang}`;
     }
+
+    window.addEventListener('load', function() {
+        // Verifica que `api` esté definido y accesible
+        if (typeof api !== 'undefined') {
+            api.get('/menu')
+                .then(response => {
+                    const menus = response.data;
+                    const navLinks = document.getElementById('nav-links');
+                    
+                    // Itera sobre los elementos del menú y los agrega al DOM
+                    menus.forEach(menu => {
+                        let menuItem = document.createElement('div');
+                        menuItem.classList.add('menu-item');
+                        
+                        let menuLink = document.createElement('a');
+                        menuLink.href = menu.route;
+                        menuLink.textContent = menu.name;
+                        menuItem.appendChild(menuLink);
+
+                        if (menu.submenus && menu.submenus.length > 0) {
+                            let submenu = document.createElement('div');
+                            submenu.classList.add('submenu');
+                            
+                            menu.submenus.forEach(sub => {
+                                let subLink = document.createElement('a');
+                                subLink.href = sub.route;
+                                subLink.textContent = sub.name;
+                                submenu.appendChild(subLink);
+                            });
+                            
+                            menuItem.appendChild(submenu);
+                        }
+                        
+                        navLinks.appendChild(menuItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al cargar el menú:', error);
+                });
+        } else {
+            console.error('Error: `api` no está definido');
+        }
+    });
 </script>
