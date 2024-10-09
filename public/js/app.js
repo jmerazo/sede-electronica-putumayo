@@ -5452,6 +5452,33 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/api.js":
+/*!*****************************!*\
+  !*** ./resources/js/api.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+  baseURL: 'http://localhost:8000/api'
+});
+axios__WEBPACK_IMPORTED_MODULE_0___default().interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  console.error('Error en la API:', error);
+  return Promise.reject(error);
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (api);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5463,9 +5490,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api */ "./resources/js/api.js");
 
 
+ // Importar api.js
+/* import axios from 'axios' */
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
+/* window.axios = axios; */
+window.api = _api__WEBPACK_IMPORTED_MODULE_2__["default"]; // Hacer api disponible globalmente
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
 /***/ }),
