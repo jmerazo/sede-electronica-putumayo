@@ -221,7 +221,7 @@
 <div class="navbar-bottom">
     <div class="nav-links">
         <a href="#home">Inicio</a>
-        <a href="#transparency">Transparencia y Acceso Información Pública</a>
+        <a href="{{ route('transparencia') }}">Transparencia y Acceso Información Pública</a>
         <a href="#services">Atención y Servicios a la Ciudadanía</a>
         <a href="#tramites">Trámites y Servicios</a>
         <a href="#participa">Participa</a>

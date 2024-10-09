@@ -2,6 +2,7 @@
 :root {
   --govco-primary-color: #3366CC; /* Azul primario de GOV.CO */
   --govco-secondary-color: #004884; /* Azul oscuro */
+  --govco-tertiary-color: #4B4B4B; /* Tundora */
   --govco-accent-color: #F42F63; /* Color acento */
   --govco-white-color: #FFFFFF;
   --govco-gray-color: #F2F2F2;
@@ -12,7 +13,7 @@
   --govco-font-primary: 'Montserrat', sans-serif;
   --govco-font-secondary: 'Work Sans', sans-serif;
   --govco-border-radius: 5px;
-  --govco-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --govco-box-shadow: 0 2px 4px rgba(23, 177, 74, 0.1);
 }
 
 /* Aplicar las variables globales a los elementos comunes */
@@ -28,17 +29,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--govco-font-primary);
-  color: var(--govco-secondary-color);
+  color: var(--govco-tertiary-color);
 }
 
 p, span, a, input, button, label {
   font-family: var(--govco-font-secondary);
-  color: var(--govco-secondary-color);
+  color: var(--govco-tertiary-color);
 }
 
 a {
   text-decoration: none;
-  color: var(--govco-secondary-color);
+  color: var(--govco-tertiary-color);
   transition: color 0.3s ease;
 }
 

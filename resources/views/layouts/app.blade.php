@@ -20,6 +20,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
+        <x-navbar />
         <div class="min-h-screen bg-gray-100">
             @if (Auth::check())
                 @livewire('navigation-menu')
@@ -38,9 +39,8 @@
                 @yield('content')
             </main>
         </div>
-
+        <x-footer />
         @stack('modals')
-
         @livewireScripts
     </body>
 </html>

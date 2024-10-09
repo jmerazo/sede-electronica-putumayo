@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\TransparenciaController;
+use App\Http\Controllers\MisionController;
 /*
 |--------------------------------------------------------------------------
 | Rutas Web
@@ -28,3 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Puedes añadir más rutas protegidas aquí
 });
+
+
+Route::get('/transparencia', [TransparenciaController::class, 'index'])->name('transparencia');
+
+Route::get('/mision', [MisionController::class, 'index'])->name('mision');
+
