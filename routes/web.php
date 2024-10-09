@@ -17,6 +17,9 @@ use App\Http\Controllers\DashboardController;
 
 // Ruta para la página de inicio, accesible para todos
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// routes/web.php
+Route::get('/set-locale/{lang}', [App\Http\Controllers\LanguageController::class, 'setLocale'])->name('setLocale');
+
 
 // Rutas que requieren autenticación
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

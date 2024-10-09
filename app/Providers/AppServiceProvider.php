@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use App\View\Components\Navbar;
 use Illuminate\Support\Facades\Blade;
@@ -26,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::component('navbar', Navbar::class);
-        /* Blade::component('components.navbar', 'navbar'); */
+        if (Session::has('locale')) {
+            App::setLocale(Session::get('locale'));
+        }
     }
 }

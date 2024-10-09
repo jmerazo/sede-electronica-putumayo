@@ -1,0 +1,153 @@
+/* Variables globales de GOV.CO */
+:root {
+  --govco-primary-color: #3366CC; /* Azul primario de GOV.CO */
+  --govco-secondary-color: #004884; /* Azul oscuro */
+  --govco-accent-color: #F42F63; /* Color acento */
+  --govco-white-color: #FFFFFF;
+  --govco-gray-color: #F2F2F2;
+  --govco-highlight-color: #FF6C00; /* Color de resalto (naranja) */
+  --govco-success-color: #068460; /* Verde de éxito */
+  --govco-error-color: #D31F3F; /* Rojo de error */
+  --govco-border-color: #737373; /* Gris para bordes */
+  --govco-font-primary: 'Montserrat', sans-serif;
+  --govco-font-secondary: 'Work Sans', sans-serif;
+  --govco-border-radius: 5px;
+  --govco-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Aplicar las variables globales a los elementos comunes */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--govco-font-secondary);
+  background-color: var(--govco-gray-color);
+  color: var(--govco-border-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--govco-font-primary);
+  color: var(--govco-secondary-color);
+}
+
+p, span, a, input, button, label {
+  font-family: var(--govco-font-secondary);
+  color: var(--govco-secondary-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--govco-secondary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--govco-primary-color);
+}
+
+button {
+  background-color: var(--govco-primary-color);
+  color: var(--govco-white-color);
+  border: none;
+  border-radius: var(--govco-border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--govco-highlight-color);
+}
+
+input, select, textarea {
+  border: 1px solid var(--govco-border-color);
+  border-radius: var(--govco-border-radius);
+  padding: 10px;
+  font-family: var(--govco-font-secondary);
+  color: var(--govco-secondary-color);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--govco-primary-color);
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: var(--govco-white-color);
+  border: 1px solid var(--govco-gray-color);
+  border-radius: var(--govco-border-radius);
+  box-shadow: var(--govco-box-shadow);
+  padding: 20px;
+}
+
+.card-header {
+  background-color: var(--govco-primary-color);
+  color: var(--govco-white-color);
+  padding: 10px;
+  border-bottom: 1px solid var(--govco-border-color);
+  font-weight: bold;
+  border-radius: var(--govco-border-radius) var(--govco-border-radius) 0 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Estilos de éxito y error */
+.success-message {
+  color: var(--govco-success-color);
+  background-color: rgba(6, 132, 96, 0.1);
+  border: 1px solid var(--govco-success-color);
+  padding: 10px;
+  border-radius: var(--govco-border-radius);
+}
+
+.error-message {
+  color: var(--govco-error-color);
+  background-color: rgba(211, 31, 63, 0.1);
+  border: 1px solid var(--govco-error-color);
+  padding: 10px;
+  border-radius: var(--govco-border-radius);
+}
+
+/* Navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--govco-primary-color);
+  border-bottom: 2px solid var(--govco-secondary-color);
+  font-family: var(--govco-font-primary);
+}
+
+.navbar .nav-links a {
+  color: var(--govco-white-color);
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: var(--govco-highlight-color);
+}
+
+.navbar .login-btn {
+  background-color: var(--govco-highlight-color);
+  color: var(--govco-white-color);
+  border: none;
+  border-radius: var(--govco-border-radius);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.navbar .login-btn:hover {
+  background-color: var(--govco-accent-color);
+}
