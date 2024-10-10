@@ -89,8 +89,6 @@
   justify-content: center;
   margin-right: 0.625rem;
 }
-
-
 </style>
 
 <div class="container my-5">

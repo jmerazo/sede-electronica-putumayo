@@ -6,6 +6,7 @@
   --govco-accent-color: #F42F63; /* Color acento */
   --govco-white-color: #FFFFFF;
   --govco-gray-color: #F2F2F2;
+  --govco-gray-menu: #f6f8f9;
   --govco-highlight-color: #FF6C00; /* Color de resalto (naranja) */
   --govco-success-color: #068460; /* Verde de éxito */
   --govco-error-color: #D31F3F; /* Rojo de error */
@@ -151,4 +152,8 @@ input:focus, select:focus, textarea:focus {
 
 .navbar .login-btn:hover {
   background-color: var(--govco-accent-color);
+}
+
+.min-h-screen {
+  margin-top: 4rem; /* Ajusta el tamaño según el alto de la barra de navegación */
 }
