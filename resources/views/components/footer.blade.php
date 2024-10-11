@@ -1,50 +1,50 @@
-<footer class="footer-govco">
+<footer class="footer-govco"> 
     <div class="footer-top">
         <div class="footer-column footer-column-logos">
             <img src="/logos/logo_govco.png" alt="GOV.CO" class="footer-logo">
             <img src="/logos/logo_vida.png" alt="Colombia Potencia de la Vida" class="footer-logo">
-            <img src="/logos/logo_co.svg" alt="CO Colombia" class="footer-logo">
+            <img src="/logos/logo_co.svg" alt="CO Colombia" class="footer-logo-small">
         </div>
 
         <div class="footer-column">
-            <h4>{{ __('footer.portal') }}</h4>
-            <p>{{ __('footer.address') }}</p>
-            <p><strong>{{ __('footer.attentionHours') }}</strong></p>
-            <p>{{ __('footer.presentialAttention') }}</p>
-            <p>{{ __('footer.virtualAttention') }}</p>
-            <p><strong>{{ __('footer.postalCode') }}</strong> 860001</p>
+            <h4>Portal Único del Estado Colombiano</h4>
+            <p><strong>Dirección:</strong> Edificio Murillo Toro Cra 8 entre calles 12A y 12B Bogotá, Colombia.</p>
+            <p><strong>Horarios de Atención:</strong></p>
+            <p>&bull; Atención Presencial: Martes, Miércoles y Viernes de 9:00 am a 3:00 pm jornada continua.</p>
+            <p>&bull; Atención Canales Virtuales: Lunes a Viernes de 8:30 am a 4:30 pm.</p>
+            <p><strong>Código Postal:</strong> 111711</p>
         </div>
 
         <div class="footer-column">
-            <h4>{{ __('footer.contact') }}</h4>
-            <p><strong>{{ __('footer.phone') }}</strong></p>
-            <p>{{ __('footer.nationalPhone') }}</p>
-            <p>{{ __('footer.mocoaPhone') }}</p>
-            <p>{{ __('footer.antiCorruptionLine') }}</p>
-            <p><strong>{{ __('footer.institutionalEmail') }}</strong></p>
-            <p>contactenos@putumayo.gov.co</p>
-            <p>notificaciones.judiciales@putumayo.gov.co</p>
-            <a href="/contact">{{ __('footer.requestCall') }}</a> | <a href="/web-call">{{ __('footer.webCall') }}</a> | <a href="/chat">{{ __('footer.chat') }}</a>
+            <h4>Contacto</h4>
+            <p><strong>Teléfono:</strong></p>
+            <p>&bull; Nacional: 01 8000 95 2525</p>
+            <p>&bull; Bogotá: +57 601 390 7950</p>
+            <p>&bull; Línea Anticorrupción: 01 8000 91 2667</p>
+            <p><strong>Correo Institucional:</strong> soporteccc@mintic.gov.co</p>
+            <a href="/contact">Solicita una llamada</a> | <a href="/web-call">Llamada web</a> | <a href="/chat">Hablemos en línea</a>
         </div>
 
         <div class="footer-column">
-            <h4>{{ __('footer.about') }}</h4>
-            <a href="/sitemap">{{ __('footer.sitemap') }}</a>
-            <a href="/privacy">{{ __('footer.privacyPolicy') }}</a>
-            <a href="/copyright">{{ __('footer.copyrightPolicy') }}</a>
-            <a href="/terms">{{ __('footer.termsAndConditions') }}</a>
-            <a href="/accessibility">{{ __('footer.accessibilityHelp') }}</a>
+            <h4>Acerca del sitio</h4>
+            <a href="/sitemap">Mapa del sitio</a>
+            <a href="/privacy">Políticas de privacidad</a>
+            <a href="/copyright">Políticas de derechos de autor</a>
+            <a href="/terms">Términos y condiciones</a>
+            <h4>Ayudas de accesibilidad</h4>
+            <a href="/accessibility">Centro de relevo</a>
             <div class="social-icons">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">{{ __('footer.followTwitter') }}</a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">{{ __('footer.followFacebook') }}</a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">{{ __('footer.followYoutube') }}</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Síguenos en Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Síguenos en Facebook</a>
             </div>
         </div>
     </div>
 
     <div class="footer-bottom">
         <p id="local-time"></p>
-        <p>{{ __('footer.unitTechnology') }} @2024</p>
+        
+        <p>@2024 - Gobernacion de Putumayo</p>
+        <p>Unidad de Gestion de Tecnologia</p>
     </div>
 </footer>
 
@@ -52,129 +52,130 @@
     function updateTime() {
         const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'America/Bogota' };
         const timeNow = new Intl.DateTimeFormat('es-CO', options).format(new Date());
-        document.getElementById('local-time').textContent = timeNow + ' {{ __("footer.legalTime") }}';
+        document.getElementById('local-time').textContent = timeNow;
     }
 
     setInterval(updateTime, 1000);
-    updateTime(); // Initial call to set time immediately on load
+    updateTime();
 </script>
 
 <style scoped>
 .footer-govco {
-background-color: var(--govco-secondary-color);
-color: var(--govco-white-color);
-padding: 30px 0;
-font-family: var(--govco-font-family);
+    background-color: #004884; /* Azul fuerte */
+    color: #FFFFFF;
+    padding: 30px 0;
+    font-family: Arial, sans-serif;
 }
 
 .footer-top {
-display: flex;
-justify-content: space-around;
-align-items: flex-start;
-margin-bottom: 20px;
-padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 40px;
+    border-bottom: 4px solid #003F72; /* Línea de separación */
 }
 
-/* Estilos para las columnas del footer */
 .footer-column {
-flex: 1;
-max-width: 300px;
-margin-bottom: 20px; /* Agregar separación entre columnas */
+    flex: 1;
+    max-width: 250px;
+    margin: 20px;
 }
 
 .footer-column h4 {
-font-size: 18px;
-margin-bottom: 15px;
-color: var(--govco-white-color);
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 
 .footer-column p,
 .footer-column a {
-color: var(--govco-white-color);
-font-size: 14px;
-margin-bottom: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .footer-column a {
-text-decoration: none;
-color: var(--govco-white-color);
+    text-decoration: none;
+    color: #FFFFFF;
 }
 
 .footer-column a:hover {
-color: var(--govco-highlight-color); /* Naranja de resalto */
+    color: #FFCC00; /* Color de resalto amarillo */
 }
 
 /* Estilos para la columna de los logos */
 .footer-column-logos {
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Estilo para los logos, asegurando que tengan el mismo tamaño */
 .footer-logo {
-width: 120px; /* Tamaño uniforme para todos los logos */
-height: auto; /* Mantener la proporción del logo */
-margin-bottom: 15px; /* Espaciado entre los logos */
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
 }
 
+.footer-logo-small {
+    width: 80px;
+    height: auto;
+    margin-bottom: 0;
+}
 
 .social-icons a {
-display: block;
-margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .footer-bottom {
-text-align: center;
-padding-top: 10px;
-border-top: 1px solid var(--govco-white-color);
+    text-align: center;
+    padding: 10px 0;
+    background-color: #004080; /* Azul oscuro */
 }
 
 .footer-bottom p {
-font-size: 12px;
-color: var(--govco-white-color);
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0;
 }
 
 /* Media Queries para el footer en pantallas pequeñas */
 @media (max-width: 768px) {
     .footer-top {
-      flex-direction: column; /* Cambiar a disposición vertical */
-      padding: 0 15px; /* Reducir el padding lateral */
+        flex-direction: column;
+        padding: 0 20px;
     }
-  
+
     .footer-column {
-      max-width: 100%; /* Asegurar que las columnas ocupen el 100% del ancho */
-      margin-bottom: 20px; /* Mantener el espaciado entre columnas */
-      text-align: center; /* Centrar el contenido en columnas */
+        max-width: 100%;
+        margin: 10px 0;
+        text-align: center;
     }
-  
+
     .footer-column-logos {
-      flex-direction: row; /* Cambiar los logos a disposición horizontal */
-      justify-content: center; /* Centrar los logos */
+        flex-direction: row;
+        justify-content: center;
     }
-  
+
     .footer-logo {
-      width: 80px; /* Reducir el tamaño de los logos en pantallas pequeñas */
-      margin-right: 10px; /* Añadir espacio entre los logos en horizontal */
+        width: 80px;
+        margin-right: 10px;
     }
-  
+
     .social-icons {
-      display: flex;
-      justify-content: center; /* Centrar los iconos de redes sociales */
-      flex-wrap: wrap; /* Alinear correctamente si hay más de un ícono */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
-  
+
     .social-icons a {
-      margin: 0 10px; /* Espacio horizontal entre los enlaces */
+        margin: 0 10px;
     }
-  
+
     .footer-bottom {
-      font-size: 12px; /* Reducir ligeramente el tamaño del texto */
-      padding: 10px 15px; /* Ajustar el padding */
-    }
-  
-    .footer-bottom p {
-      margin-bottom: 10px; /* Añadir espacio inferior */
+        font-size: 12px;
+        padding: 10px 20px;
     }
 }
 </style>

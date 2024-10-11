@@ -49,7 +49,7 @@
     align-items: center;
     padding: 1rem 2rem;
     background-color: var(--govco-white-color);
-    border-bottom: 1px solid var(--govco-gray-color);
+    border-bottom: 2px solid var(--govco-gray-color);
     font-family: var(--govco-font-family);
 }
 
@@ -153,7 +153,7 @@
 
 /* Estilo del enlace dentro del contenedor del menú */
 .menu-item > a {
-    color: var(-govco-secondary-color);
+    color: var(--govco-tertiary-color);
     text-decoration: none;
     font-weight: 700;
     font-family: var(--govco-font-primary);
@@ -194,7 +194,7 @@
     display: block;
     padding: 0.5rem 1rem;
     background-color: var(--govco-gray-menu);
-    font-family: var(--govco-font-primary);
+    font-family: var( );
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease;
