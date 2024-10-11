@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Dependency;
+use App\Models\Publication;
 
 class ApiController extends Controller
 {
@@ -16,5 +17,10 @@ class ApiController extends Controller
     public function getDependencies()
     {
         return Dependency::all();
+    }
+
+    public function getPublications()
+    {
+        return Publication::all();
     }
 }
