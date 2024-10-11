@@ -13,6 +13,5 @@
     @endphp
 
     <x-slider :images="$images" />
-    <h1>Bienvenido a Mi Aplicación</h1>
-    <p>Contenido de la página de inicio.</p>
+    <x-news :publications="$publications" />
 @endsection
