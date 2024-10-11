@@ -8,67 +8,71 @@
 .accordion-govco .button-accordion-govco {
   width: 100%;
   text-align: left;
-  background-color: #ffffff;
+  background-color: var(--govco-white-color);
   border: 0;
   min-height: 4.375rem;
   padding: 0 1.5rem;
-  border-bottom: 0.125rem solid #E6EFFD;
+  border-bottom: 0.125rem solid var(--govco-gray-color);
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .accordion-govco .button-accordion-govco:focus {
-  background-color: #ffffff;
+  background-color: var(--govco-white-color);
 }
 
 .accordion-govco .text-button-accordion-govco {
-  font-family: 'Montserrat-SemiBold';
-  color: #4B4B4B;
+  font-family: var(--govco-font-primary);
+  color: var(--govco-tertiary-color);
   font-size: 18px;
   line-height: 1rem;
 }
 
 .accordion-govco .button-accordion-govco::after {
-  font-family: "govco-font";
-  font-size: 26px;
-  color: #004884;
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('/icons/angle-up.svg') no-repeat center;
+  background-size: contain;
   margin-left: auto;
-  content: "\e813";
+  transition: transform 0.3s ease;
 }
 
 .accordion-govco .button-accordion-govco.collapsed::after {
-  content: "\e814";
+  transform: rotate(180deg);
 }
 
 .accordion-govco .item-accordion-govco {
-  background-color: #ffffff;
+  background-color: var(--govco-white-color);
 }
 
 .accordion-govco .body-accordion-govco {
   padding: 1.875rem 1.5rem;
-  background-color: #F6F8F9;
+  background-color: var(--govco-gray-color);
 }
 
 .accordion-govco .title-one-accordion-govco {
-  color: #4B4B4B;
+  color: var(--govco-tertiary-color);
   font-size: 18px;
-  font-family: 'Montserrat-SemiBold';
+  font-family: var(--govco-font-primary);
   display: block;
 }
 
 .accordion-govco .title-two-accordion-govco {
-  color: #000000;
+  color: var(--govco-primary-color);
   font-size: 16px;
-  font-family: 'Montserrat-Bold';
+  font-family: var(--govco-font-primary);
   margin-left: 0.875rem;
   margin-top: 1.875rem;
   display: block;
 }
 
 .accordion-govco .text-one-accordion-govco {
-  color: #4B4B4B;
+  color: var(--govco-tertiary-color);
   font-size: 16px;
-  font-family: 'WorkSans-Regular';
+  font-family: var(--govco-font-secondary);
   margin-left: 0.875rem;
   margin-top: 0.938rem;
   margin-bottom: 0;
@@ -77,11 +81,11 @@
 }
 
 .accordion-govco .icon-button-accordion-govco {
-  font-family: 'Montserrat-Bold';
+  font-family: var(--govco-font-primary);
   font-size: 20px;
-  color: #FFFFFF;
-  background-color: #004884;
-  border-radius: 3.125rem;
+  color: var(--govco-white-color);
+  background-color: var(--govco-secondary-color);
+  border-radius: 50%;
   min-width: 2rem;
   height: 2rem;
   display: flex;
@@ -89,8 +93,6 @@
   justify-content: center;
   margin-right: 0.625rem;
 }
-
-
 </style>
 
 <div class="container my-5">
@@ -102,7 +104,7 @@
         <div class="input-group">
             <input type="text" class="form-control" id="search-input" placeholder="Escribe lo que buscas" aria-label="Buscar">
             <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-search"></i>
+              <img src="/icons/search.svg" width="16" height="16">
             </button>
         </div>
     </div>

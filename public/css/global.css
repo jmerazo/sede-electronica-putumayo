@@ -4,9 +4,9 @@
   --govco-secondary-color: #004884; /* Azul oscuro */
   --govco-tertiary-color: #4B4B4B; /* Tundora */
   --govco-accent-color: #F42F63; /* Color acento */
-  --govco-white-color: #FFFFFF; /* Blanco */
-  --govco-gray-color: #F2F2F2; /* Gris claro */
-  --govco-highlight-color: #FF6C00; /* Naranja de resalto */
+  --govco-white-color: #FFFFFF;
+  --govco-gray-color: #F2F2F2;
+  --govco-gray-menu: #f6f8f9;
   --govco-success-color: #068460; /* Verde de éxito */
   --govco-error-color: #D31F3F; /* Rojo de error */
   --govco-border-color: #737373; /* Gris para bordes */
@@ -151,5 +151,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .navbar .login-btn:hover {
-  background-color: var(--govco-primary-color); /* Cambia al color acento en hover */
+  background-color: var(--govco-accent-color);
+}
+
+.min-h-screen {
+  margin-top: 4rem; /* Ajusta el tamaño según el alto de la barra de navegación */
 }

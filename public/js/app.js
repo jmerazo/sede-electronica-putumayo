@@ -5493,11 +5493,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api */ "./resources/js/api.js");
 
 
- // Importar api.js
-/* import axios from 'axios' */
+
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-/* window.axios = axios; */
-window.api = _api__WEBPACK_IMPORTED_MODULE_2__["default"]; // Hacer api disponible globalmente
+window.api = _api__WEBPACK_IMPORTED_MODULE_2__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
 /***/ }),
