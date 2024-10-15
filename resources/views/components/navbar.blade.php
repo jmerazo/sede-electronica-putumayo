@@ -225,9 +225,15 @@
     }
 }
 
+.menu-item.selected {
+    border: 2px solid var(--govco-success-color);
+    border-radius: 4px; /* Opcional: añade esquinas redondeadas */
+    box-sizing: border-box; /* Asegura que el borde no afecte el tamaño del elemento */
+}
+
 /* Compensar la altura de la navbar completa en el contenedor principal */
 body {
-    padding-top: 180px; /* Ajusta según la altura total de navbar-top + navbar + navbar-bottom */
+    padding-top: 135px; /* Ajusta según la altura total de navbar-top + navbar + navbar-bottom */
 }
 </style>
 
@@ -239,9 +245,7 @@ body {
                 <img src="/logos/logo_govco.png" alt="Logo GOV.CO">
             </a>
         </div>
-    
         <div class="actions">
-            <!-- Botón de cambio de idioma -->
             <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">
                 {{ __('navbar.language') }}
             </button>
@@ -254,7 +258,6 @@ body {
                 <img src="/logos/logo_gobernacion_min.png" alt="Gobernación del Putumayo">
             </a>
         </div>
-        
         <div class="search__login">
             <div class="search-bar">
                 <input type="text" placeholder="{{ __('navbar.search_placeholder') }}">
@@ -269,55 +272,20 @@ body {
     </nav>
 
     <div class="navbar-bottom">
-        <div id="nav-links" class="nav-links"></div>
+        <div class="nav-links">
+            @foreach ($menus as $menu)
+                <div class="menu-item {{ request()->is($menu->route) ? 'selected' : '' }}">
+                    <a href="{{ url($menu->route) }}">{{ $menu->name }}</a>
+
+                    @if ($menu->submenus->isNotEmpty())
+                        <div class="submenu">
+                            @foreach ($menu->submenus as $submenu)
+                                <a href="{{ url($submenu->route) }}">{{ $submenu->name }}</a>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            @endforeach
+        </div>
     </div>
 </header>
-
-<script>
-    function toggleLanguage() {
-        const currentLang = '{{ App::getLocale() }}';
-        let newLang = currentLang === 'es' ? 'en' : 'es';
-        window.location.href = `/set-locale/${newLang}`;
-    }
-
-    window.addEventListener('load', function() {
-        if (typeof api !== 'undefined') {
-            api.get('/menu')
-                .then(response => {
-                    const menus = response.data;
-                    const navLinks = document.getElementById('nav-links');
-                    
-                    menus.forEach(menu => {
-                        let menuItem = document.createElement('div');
-                        menuItem.classList.add('menu-item');
-                        
-                        let menuLink = document.createElement('a');
-                        menuLink.href = menu.route;
-                        menuLink.textContent = menu.name;
-                        menuItem.appendChild(menuLink);
-
-                        if (menu.submenus && menu.submenus.length > 0) {
-                            let submenu = document.createElement('div');
-                            submenu.classList.add('submenu');
-                            
-                            menu.submenus.forEach(sub => {
-                                let subLink = document.createElement('a');
-                                subLink.href = sub.route;
-                                subLink.textContent = sub.name;
-                                submenu.appendChild(subLink);
-                            });
-                            
-                            menuItem.appendChild(submenu);
-                        }
-                        
-                        navLinks.appendChild(menuItem);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error al cargar el menú:', error);
-                });
-        } else {
-            console.error('Error: `api` no está definido');
-        }
-    });
-</script>

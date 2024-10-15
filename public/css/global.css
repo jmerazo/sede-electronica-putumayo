@@ -16,6 +16,9 @@
   --govco-border-radius: 5px; /* Radio de bordes redondeados */
   --govco-box-shadow: 0 2px 4px rgba(23, 177, 74, 0.1); /* Sombra suave */
 }
+* {
+  font-family: var(--govco-font-secondary);
+}
 
 /* Aplicar las variables globales a los elementos comunes */
 body {
