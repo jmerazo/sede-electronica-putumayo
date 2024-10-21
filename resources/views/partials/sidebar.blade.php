@@ -38,6 +38,9 @@
 </div>
 
 <style scoped>
+.body-accordion-govco{
+    margin: 1rem;
+}
 /* Estilos del botón de acordeón con la flecha */
 .accordion-govco .button-accordion-govco {
     width: 100%;
@@ -78,27 +81,47 @@
 
 /* Sub-elementos de la lista */
 .list-group-numbered {
-    list-style-type: decimal;
-    padding-left: 1rem;
+    padding-left: 1rem; /* Ajusta el espacio entre los números y el texto */
     margin-top: 10px;
+    margin-bottom: 0;
+    color: #000 !important; /* Color del texto estándar */
 }
 
 .list-group-numbered li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 16px; /* Tamaño de fuente para los enlaces */
 }
 
-/* Resaltar el subelemento seleccionado */
-.list-group-numbered li a.active, .list-group-numbered li a:hover {
-    background-color: #f0f8ff;
-    border-left: 3px solid #004884; /* Borde azul al seleccionar o hacer hover */
-    padding-left: 10px;
-    color: #004884; /* Cambiar el color del texto */
-    text-decoration: none;
+/* Estilo para los enlaces de los subelementos */
+.list-group-numbered li {
+    color: var(--gov-black-color) !important; /* Color del enlace en estado normal */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: normal;
 }
 
-/* Cambiar el color del texto al hacer hover */
+.list-group-numbered li:hover {
+    color: var(--govco-secondary-color) !important; /* Cambiar el color al hacer hover (como en la primera imagen) */
+    text-decoration: underline; /* Subrayado solo en hover */
+    font-weight: 500;
+}
+
+/* Estilo para los enlaces de los subelementos */
+.list-group-numbered li a {
+    color: var(--gov-black-color) !important; /* Color del enlace en estado normal */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: normal;
+    letter-spacing: normal;
+}
+
 .list-group-numbered li a:hover {
-    color: #004884;
-    background-color: #e7f3ff;
+    color: var(--govco-secondary-color) !important; /* Cambiar el color al hacer hover (como en la primera imagen) */
+    text-decoration: underline; /* Subrayado solo en hover */
+    font-weight: 500;
+}
+
+.list-group-numbered li a.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #b03535; /* Color para el enlace activo */
 }
 </style>

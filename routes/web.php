@@ -20,6 +20,7 @@ use App\Http\Controllers\LawController;
 use App\Http\Controllers\ProgramPlanController;
 use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\DecretoReglamentarioController;
+use App\Http\Controllers\SidebarController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -28,7 +29,8 @@ Route::get('/publications/{id}', [PublicationsController::class, 'show'])->name(
 Route::get('/set-locale/{lang}', [App\Http\Controllers\LanguageController::class, 'setLocale'])->name('setLocale');
 Route::get('/transparencia', [TransparenciaController::class, 'index'])->name('transparencia.index');
 Route::get('/transparencia/{id}', [TransparenciaController::class, 'show'])->name('transparencia.show');
-Route::get('/mision/{id}', [MisionController::class, 'index'])->name('mision');
+Route::get('/mision', [MisionController::class, 'index'])->name('mision');
+Route::get('/subelement/{id}', [SidebarController::class, 'show'])->name('subelemento.show');
 Route::get('/navbar', [MenuController::class, 'index']);
 Route::get('/directorio', [DirectoryController::class, 'index'])->name('directorio');
 Route::get('/servers-directory', [ServersDirectoryController::class, 'index'])->name('servers_directory');

@@ -1,5 +1,11 @@
 @extends('layouts.sidebar')
+
 @section('title', 'Misión')
+
+@section('sidebar')
+    <!-- Sidebar para pasar los subelementos -->
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
 <style>
 /* Estilos globales */
 body {
@@ -47,11 +53,6 @@ body {
     }
 }
 </style>
-
-@section('sidebar')
-    <!-- Pasar los subelementos al partial de sidebar -->
-    @include('partials.sidebar', ['subElementos' => $subElementos])
-@endsection
 
 @section('main-content')
 <div class="container-ms">

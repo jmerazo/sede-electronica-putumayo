@@ -10,6 +10,7 @@
   --govco-success-color: #068460; /* Verde de éxito */
   --govco-error-color: #D31F3F; /* Rojo de error */
   --govco-border-color: #737373; /* Gris para bordes */
+  --govco-black-color: #000;
   --govco-background-color: #F2F2F2; /* Gris para bordes */
   --govco-font-primary: 'Montserrat', sans-serif; /* Fuente primaria */
   --govco-font-secondary: 'Work Sans', sans-serif; /* Fuente secundaria */
@@ -58,15 +59,15 @@ p, span, a, input, button, label {
   font-size: 1rem; /* 16px */
 }
 
-a {
-  text-decoration: none; /* Sin subrayado en los enlaces */
-  color: var(--govco-tertiary-color); /* Color Tundora */
-  transition: color 0.3s ease; /* Transición suave de color */
+/* a {
+  text-decoration: none;
+  color: var(--govco-tertiary-color);
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--govco-primary-color); /* Cambia al color primario al hacer hover */
-}
+  color: var(--govco-primary-color);
+} */
 
 button {
   background-color: var(--govco-primary-color);
