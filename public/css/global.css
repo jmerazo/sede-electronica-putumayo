@@ -22,20 +22,6 @@ html {
 }
 
 body {
-<<<<<<< HEAD
-  margin: 0; /* Sin margen alrededor del cuerpo */
-  padding: 0; /* Sin relleno interno */
-  font-family: var(--govco-font-secondary); /* Aplica la fuente secundaria */
-  background-color: var(--govco-gray-color); /* Fondo gris claro */
-  color: var(--govco-border-color); /* Texto gris */
-  -webkit-font-smoothing: antialiased; /* Suavizado de fuentes en WebKit */
-  -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes en OS X */
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--govco-font-primary); /* Usa la fuente primaria para encabezados */
-  color: var(--govco-tertiary-color); /* Color de texto Tundora */
-=======
   margin: 0;
   padding: 0;
   font-family: var(--govco-font-secondary);
@@ -50,7 +36,6 @@ h1 {
   font-family: var(--govco-font-primary);
   color: var(--govco-tertiary-color);
   font-size: 2rem; /* 32px */
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 h2 {
@@ -68,14 +53,9 @@ h3 {
 /* Continúa con h4, h5, h6 si es necesario */
 
 p, span, a, input, button, label {
-<<<<<<< HEAD
-  font-family: var(--govco-font-secondary); /* Fuente secundaria para estos elementos */
-  color: var(--govco-tertiary-color); /* Color Tundora para el texto */
-=======
   font-family: var(--govco-font-secondary);
   color: var(--govco-tertiary-color);
   font-size: 1rem; /* 16px */
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 a {
@@ -89,27 +69,6 @@ a:hover {
 }
 
 button {
-<<<<<<< HEAD
-  background-color: var(--govco-primary-color); /* Fondo azul primario */
-  color: var(--govco-white-color); /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-  padding: 10px 20px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor a puntero */
-  transition: background-color 0.3s ease; /* Transición suave de color de fondo */
-}
-
-button:hover {
-  background-color: var(--govco-secondary-color); /* Cambia al color de resalto en hover */
-}
-
-input, select, textarea {
-  border: 1px solid var(--govco-border-color); /* Borde gris */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-  padding: 10px; /* Espaciado interno */
-  font-family: var(--govco-font-secondary); /* Fuente secundaria */
-  color: var(--govco-secondary-color); /* Texto azul oscuro */
-=======
   background-color: var(--govco-primary-color);
   color: var(--govco-white-color);
   border: none;
@@ -131,7 +90,6 @@ input, select, textarea {
   font-family: var(--govco-font-secondary);
   color: var(--govco-secondary-color);
   font-size: 1rem; /* 16px */
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 input:focus, select:focus, textarea:focus {
@@ -140,32 +98,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 .container {
-<<<<<<< HEAD
-  max-width: 1140px; /* Ancho máximo de contenedor */
-  margin: 0 auto; /* Centrado horizontal */
-  padding: 20px; /* Espaciado interno */
-}
-
-.card {
-  background-color: var(--govco-white-color); /* Fondo blanco */
-  border: 1px solid var(--govco-gray-color); /* Borde gris claro */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-  box-shadow: var(--govco-box-shadow); /* Sombra suave */
-  padding: 20px; /* Espaciado interno */
-}
-
-.card-header {
-  background-color: var(--govco-primary-color); /* Fondo azul primario */
-  color: var(--govco-white-color); /* Texto blanco */
-  padding: 10px; /* Espaciado interno */
-  border-bottom: 1px solid var(--govco-border-color); /* Borde inferior gris */
-  font-weight: bold; /* Texto en negrita */
-  border-radius: var(--govco-border-radius) var(--govco-border-radius) 0 0; /* Bordes redondeados en la parte superior */
-}
-
-.card-body {
-  padding: 20px; /* Espaciado interno */
-=======
   max-width: 71.25rem; /* 1140px */
   margin: 0 auto;
   padding: 1.25rem; /* 20px */
@@ -192,25 +124,9 @@ input:focus, select:focus, textarea:focus {
 
 .card-body {
   padding: 1.25rem; /* 20px */
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 .success-message {
-<<<<<<< HEAD
-  color: var(--govco-success-color); /* Texto verde */
-  background-color: rgba(6, 132, 96, 0.1); /* Fondo verde claro */
-  border: 1px solid var(--govco-success-color); /* Borde verde */
-  padding: 10px; /* Espaciado interno */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-}
-
-.error-message {
-  color: var(--govco-error-color); /* Texto rojo */
-  background-color: rgba(211, 31, 63, 0.1); /* Fondo rojo claro */
-  border: 1px solid var(--govco-error-color); /* Borde rojo */
-  padding: 10px; /* Espaciado interno */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-=======
   color: var(--govco-success-color);
   background-color: rgba(6, 132, 96, 0.1);
   border: 1px solid var(--govco-success-color);
@@ -224,40 +140,10 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid var(--govco-error-color);
   padding: 0.625rem; /* 10px */
   border-radius: var(--govco-border-radius);
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 /* Navegación */
 .navbar {
-<<<<<<< HEAD
-  display: flex; /* Organiza los elementos en una fila */
-  justify-content: space-between; /* Distribuye el espacio entre los elementos */
-  align-items: center; /* Centra verticalmente los elementos */
-  padding: 1rem 2rem; /* Espaciado interno */
-  background-color: var(--govco-primary-color); /* Fondo azul primario */
-  border-bottom: 2px solid var(--govco-secondary-color); /* Borde inferior azul oscuro */
-  font-family: var(--govco-font-primary); /* Fuente primaria */
-}
-
-.navbar .nav-links a {
-  color: var(--govco-white-color); /* Texto blanco */
-  margin-right: 1rem; /* Margen derecho */
-  transition: color 0.3s ease; /* Transición suave de color */
-}
-
-.navbar .nav-links a:hover {
-  color: var(--govco-secondary-color); /* Cambia al color de resalto en hover */
-}
-
-.navbar .login-btn {
-  background-color: var(--govco-secondary-color); /* Fondo de resalto */
-  color: var(--govco-white-color); /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: var(--govco-border-radius); /* Bordes redondeados */
-  padding: 0.5rem 1rem; /* Espaciado interno */
-  font-size: 1rem; /* Tamaño de fuente */
-  cursor: pointer; /* Cambia el cursor a puntero */
-=======
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -287,7 +173,6 @@ input:focus, select:focus, textarea:focus {
   padding: 0.5rem 1rem;
   font-size: 1rem; /* 16px */
   cursor: pointer;
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
 }
 
 .navbar .login-btn:hover {
@@ -295,10 +180,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 .min-h-screen {
-<<<<<<< HEAD
-  margin-top: 4rem; /* Ajusta el tamaño según el alto de la barra de navegación */
-}
-=======
   margin-top: 4rem; /* Ajusta según el alto de la barra de navegación */
 }
 
@@ -372,4 +253,3 @@ body.high-contrast .card-header {
       margin-right: 0.5rem;
   }
 }
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a

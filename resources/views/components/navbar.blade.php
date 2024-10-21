@@ -157,11 +157,7 @@
 
 /* Estilo del enlace dentro del contenedor del menú */
 .menu-item > a {
-<<<<<<< HEAD
-    color: var(--govco-tertiary-color);
-=======
     color: #000;
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
     text-decoration: none;
     font-weight: 500;
     font-family: var(--govco-font-primary);

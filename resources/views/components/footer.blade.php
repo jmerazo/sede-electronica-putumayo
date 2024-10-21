@@ -178,9 +178,6 @@
         padding: 10px 20px;
     }
 }
-<<<<<<< HEAD
-</style>
-=======
 
 /* Estilos para el modo de alto contraste */
 body.high-contrast .footer-govco {
@@ -235,4 +232,3 @@ body.high-contrast .social-icons a img {
     }
 }
 </style>
->>>>>>> 2fd668844b2344eeb15d077a0b0ba7be0e89880a
