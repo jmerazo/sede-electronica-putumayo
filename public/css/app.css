@@ -1338,6 +1338,10 @@ select {
   margin-bottom: 0;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .collapse {
   visibility: collapse;
 }

@@ -130,14 +130,23 @@
                             @endphp
 
                             @if ($subElementos->isNotEmpty())
-                                <ol>
-                                    @foreach ($subElementos as $subElemento)
-                                        <li><a href="{{ $subElemento->enlace }}" target="_blank" class="text-primary">{{ $subElemento->titulo }}</a></li>
-                                    @endforeach
-                                </ol>
+                              <ol>
+                                  @foreach ($subElementos as $subElemento)
+                                      <li>
+                                        <a href="{{ route('mision', $subElemento->id_padre) }}" class="text-primary">
+                                            {{ $subElemento->titulo }}
+                                        </a>
+                                      </li>
+                                  @endforeach
+                              </ol>
                             @else
                                 <p>No hay subelementos disponibles.</p>
                             @endif
+
+                            <!-- Botón para ver más detalles de la sección -->
+                            <a href="{{ route('transparencia.show', ['id' => $seccion->id]) }}" class="btn btn-primary mt-2">
+                                Ver más detalles
+                            </a>
                         </div>
                     </div>
                 </div>
