@@ -177,4 +177,57 @@ color: var(--govco-white-color);
       margin-bottom: 10px; /* Añadir espacio inferior */
     }
 }
+
+/* Estilos para el modo de alto contraste */
+body.high-contrast .footer-govco {
+    background-color: #000; /* Fondo negro */
+    color: #fff;            /* Texto blanco */
+}
+
+body.high-contrast .footer-govco a {
+    color: #0ff;            /* Enlaces en cian */
+}
+
+body.high-contrast .footer-govco a:hover {
+    color: #fff;            /* Enlaces en blanco al pasar el cursor */
+}
+
+body.high-contrast .footer-column h4 {
+    color: #fff;            /* Encabezados en blanco */
+}
+
+body.high-contrast .footer-column p {
+    color: #fff;            /* Párrafos en blanco */
+}
+
+body.high-contrast .footer-logo {
+    filter: invert(1);      /* Invertir colores de los logos */
+}
+
+body.high-contrast .footer-bottom {
+    border-top: 1px solid #fff; /* Borde superior en blanco */
+}
+
+body.high-contrast .footer-bottom p {
+    color: #fff;            /* Texto en blanco */
+}
+
+body.high-contrast .social-icons a {
+    color: #0ff;            /* Iconos de redes sociales en cian */
+}
+
+body.high-contrast .social-icons a:hover {
+    color: #fff;            /* Iconos en blanco al pasar el cursor */
+}
+
+body.high-contrast .social-icons a img {
+    filter: invert(1);      /* Invertir colores de los iconos si son imágenes */
+}
+
+/* Media Queries para el modo de alto contraste en pantallas pequeñas */
+@media (max-width: 768px) {
+    body.high-contrast .footer-top {
+        /* Mantiene los ajustes responsivos */
+    }
+}
 </style>

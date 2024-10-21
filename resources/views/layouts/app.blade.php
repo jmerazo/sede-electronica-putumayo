@@ -7,6 +7,7 @@
 
         <title>{{ config('app.name', 'Putumayo') }}</title>
         <link rel="stylesheet" href="{{ asset('/css/global.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -21,6 +22,7 @@
         <script src="{{ asset('js/api.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
+        <x-accesibility-bar />
         <x-jet-banner />
         <x-navbar />
         <div class="min-h-screen bg-gray-100">
@@ -37,7 +39,7 @@
                 </header>
             @endif
 
-            <main>
+            <main class="container-centered">
                 @yield('content')
             </main>
         </div>
@@ -48,9 +50,3 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
-
-<style>
-  * {
-    font-family: 'Work Sans', sans-serif !important;
-  }
-</style>

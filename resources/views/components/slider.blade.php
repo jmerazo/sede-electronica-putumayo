@@ -105,14 +105,13 @@
 </script>
 
 <style>
-/* Estilo principal */
 #slider-container {
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% + 12rem); /* Asegura que cubra el ancho de la pantalla más los márgenes globales */
+    margin-left: -6rem; /* Anula los márgenes globales aplicados en los lados */
+    margin-right: -6rem; /* Anula los márgenes globales aplicados en los lados */
     height: 500px;
-    margin: auto;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Asegura que no haya desbordamiento */
 }
 
 .slider {

@@ -15,29 +15,46 @@
   --govco-border-radius: 5px;
   --govco-box-shadow: 0 2px 4px rgba(23, 177, 74, 0.1);
 }
-* {
-  font-family: var(--govco-font-secondary);
+
+html {
+  font-size: 16px; /* Tamaño base */
 }
 
-/* Aplicar las variables globales a los elementos comunes */
 body {
   margin: 0;
   padding: 0;
   font-family: var(--govco-font-secondary);
   background-color: var(--govco-gray-color);
   color: var(--govco-border-color);
+  font-size: 1rem; /* 16px */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-family: var(--govco-font-primary);
   color: var(--govco-tertiary-color);
+  font-size: 2rem; /* 32px */
 }
+
+h2 {
+  font-family: var(--govco-font-primary);
+  color: var(--govco-tertiary-color);
+  font-size: 1.75rem; /* 28px */
+}
+
+h3 {
+  font-family: var(--govco-font-primary);
+  color: var(--govco-tertiary-color);
+  font-size: 1.5rem; /* 24px */
+}
+
+/* Continúa con h4, h5, h6 si es necesario */
 
 p, span, a, input, button, label {
   font-family: var(--govco-font-secondary);
   color: var(--govco-tertiary-color);
+  font-size: 1rem; /* 16px */
 }
 
 a {
@@ -55,21 +72,23 @@ button {
   color: var(--govco-white-color);
   border: none;
   border-radius: var(--govco-border-radius);
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1rem; /* 16px */
 }
 
 button:hover {
-  background-color: var(--govco-highlight-color);
+  background-color: var(--govco-accent-color);
 }
 
 input, select, textarea {
   border: 1px solid var(--govco-border-color);
   border-radius: var(--govco-border-radius);
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
   font-family: var(--govco-font-secondary);
   color: var(--govco-secondary-color);
+  font-size: 1rem; /* 16px */
 }
 
 input:focus, select:focus, textarea:focus {
@@ -78,9 +97,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 71.25rem; /* 1140px */
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
 .card {
@@ -88,28 +107,29 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid var(--govco-gray-color);
   border-radius: var(--govco-border-radius);
   box-shadow: var(--govco-box-shadow);
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
+  font-size: 1rem; /* 16px */
 }
 
 .card-header {
   background-color: var(--govco-primary-color);
   color: var(--govco-white-color);
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
   border-bottom: 1px solid var(--govco-border-color);
   font-weight: bold;
   border-radius: var(--govco-border-radius) var(--govco-border-radius) 0 0;
+  font-size: 1.25rem; /* 20px */
 }
 
 .card-body {
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
-/* Estilos de éxito y error */
 .success-message {
   color: var(--govco-success-color);
   background-color: rgba(6, 132, 96, 0.1);
   border: 1px solid var(--govco-success-color);
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
   border-radius: var(--govco-border-radius);
 }
 
@@ -117,7 +137,7 @@ input:focus, select:focus, textarea:focus {
   color: var(--govco-error-color);
   background-color: rgba(211, 31, 63, 0.1);
   border: 1px solid var(--govco-error-color);
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
   border-radius: var(--govco-border-radius);
 }
 
@@ -130,25 +150,27 @@ input:focus, select:focus, textarea:focus {
   background-color: var(--govco-primary-color);
   border-bottom: 2px solid var(--govco-secondary-color);
   font-family: var(--govco-font-primary);
+  font-size: 1rem; /* 16px */
 }
 
 .navbar .nav-links a {
   color: var(--govco-white-color);
   margin-right: 1rem;
   transition: color 0.3s ease;
+  font-size: 1rem; /* 16px */
 }
 
 .navbar .nav-links a:hover {
-  color: var(--govco-highlight-color);
+  color: var(--govco-accent-color);
 }
 
 .navbar .login-btn {
-  background-color: var(--govco-highlight-color);
+  background-color: var(--govco-accent-color);
   color: var(--govco-white-color);
   border: none;
   border-radius: var(--govco-border-radius);
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   cursor: pointer;
 }
 
@@ -157,5 +179,76 @@ input:focus, select:focus, textarea:focus {
 }
 
 .min-h-screen {
-  margin-top: 4rem; /* Ajusta el tamaño según el alto de la barra de navegación */
+  margin-top: 4rem; /* Ajusta según el alto de la barra de navegación */
+}
+
+/* Modo de alto contraste */
+body.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+body.high-contrast a {
+  color: #0ff;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast h5,
+body.high-contrast h6 {
+  color: #fff;
+}
+
+body.high-contrast button {
+  background-color: #fff;
+  color: #000;
+}
+
+body.high-contrast .navbar {
+  background-color: #000;
+  border-bottom: 2px solid #fff;
+}
+
+body.high-contrast .card {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+body.high-contrast .card-header {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+/* Clase global para centrar el contenido con márgenes */
+.container-centered {
+  margin-left: 6rem;
+  margin-right: 6rem;
+  max-width: 100%; /* Asegurarse de que no se desborde del contenedor */
+}
+
+/* Asegurarse de que el contenido en pantallas pequeñas sea responsivo */
+@media (max-width: 1200px) {
+  .container-centered {
+      margin-left: 3rem; /* Reducir márgenes en pantallas más pequeñas */
+      margin-right: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-centered {
+      margin-left: 1.5rem; /* Márgenes más pequeños para móviles */
+      margin-right: 1.5rem;
+  }
+}
+
+/* Si deseas quitar los márgenes en pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .container-centered {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+  }
 }

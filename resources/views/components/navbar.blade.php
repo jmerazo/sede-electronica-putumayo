@@ -1,5 +1,4 @@
 <style>
-/* Contenedor principal de la navbar */
 .navbar-container {
     position: fixed;
     top: 0;
@@ -8,7 +7,6 @@
     background-color: var(--govco-secondary-color);
 }
 
-/* Estilos para la parte superior de la barra de navegación */
 .navbar-top {
     background-color: var(--govco-secondary-color);
     color: var(--govco-white-color);
@@ -17,6 +15,7 @@
     align-items: center;
     padding: 0.5rem 2rem;
     font-family: var(--govco-font-primary);
+    margin-left: 6rem;
 }
 
 .navbar-top .govco-logo {
@@ -106,6 +105,7 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    margin-right: 6rem;
 }
 
 .login__btn:hover {
@@ -116,6 +116,11 @@
 .navbar .logo img {
     max-width: 200px;
     height: auto;
+    margin-left: 6rem;
+}
+
+.actions {
+    margin-right: 6rem;
 }
 
 .btn__login {
@@ -123,7 +128,6 @@
     color: var(--govco-white-color);
 }
 
-/* Estilo del área del login */
 .login-btn {
     color: var(--govco-primary-color);
     text-decoration: none;
@@ -153,9 +157,9 @@
 
 /* Estilo del enlace dentro del contenedor del menú */
 .menu-item > a {
-    color: var(-govco-secondary-color);
+    color: #000;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 500;
     font-family: var(--govco-font-primary);
     font-size: 0.8rem;
     padding: 1rem 0;
@@ -234,6 +238,124 @@
 /* Compensar la altura de la navbar completa en el contenedor principal */
 body {
     padding-top: 135px; /* Ajusta según la altura total de navbar-top + navbar + navbar-bottom */
+}
+
+/* Estilos de alto contraste para la barra de navegación */
+
+/* Contenedor principal de la navbar */
+body.high-contrast .navbar-container {
+    background-color: #000;
+}
+
+/* Navbar superior */
+body.high-contrast .navbar-top {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Logo en la navbar-top */
+body.high-contrast .navbar-top .govco-logo img {
+    filter: invert(1); /* Invierte los colores del logo */
+}
+
+/* Botón de idioma en la navbar-top */
+body.high-contrast .navbar-top .lang-btn {
+    color: #fff;
+    background-color: #000;
+}
+
+body.high-contrast .navbar-top .lang-btn:hover {
+    background-color: #333;
+}
+
+/* Barra de navegación principal */
+body.high-contrast .navbar {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Enlaces en la barra de navegación */
+body.high-contrast .navbar a {
+    color: #0ff;
+}
+
+body.high-contrast .navbar a:hover {
+    color: #fff;
+}
+
+/* Barra de búsqueda */
+body.high-contrast .search-bar {
+    border-color: #fff;
+}
+
+body.high-contrast .search-bar input {
+    background-color: #000;
+    color: #fff;
+}
+
+body.high-contrast .search-bar button {
+    color: #fff;
+}
+
+body.high-contrast .search-bar button:hover {
+    color: #0ff;
+}
+
+/* Botón de login */
+body.high-contrast .login__btn {
+    background-color: #fff;
+    color: #000;
+}
+
+body.high-contrast .login__btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Navbar inferior */
+body.high-contrast .navbar-bottom {
+    background-color: #000;
+}
+
+/* Elementos del menú */
+body.high-contrast .menu-item > a {
+    color: #fff;
+}
+
+body.high-contrast .menu-item:hover {
+    background-color: #333;
+}
+
+body.high-contrast .menu-item:hover > a {
+    color: #fff;
+}
+
+/* Submenú */
+body.high-contrast .submenu {
+    background-color: #000;
+    border-color: #fff;
+}
+
+body.high-contrast .submenu a {
+    color: #fff;
+}
+
+body.high-contrast .submenu a:hover {
+    background-color: #333;
+}
+
+/* Estilos para el footer */
+body.high-contrast .footer {
+    background-color: #000;
+    color: #fff;
+}
+
+body.high-contrast .footer a {
+    color: #0ff;
+}
+
+body.high-contrast .footer a:hover {
+    color: #fff;
 }
 </style>
 
