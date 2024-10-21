@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Dependency;
 use App\Models\Publication;
+use App\Models\Event;
 
 class ApiController extends Controller
 {
@@ -22,5 +23,10 @@ class ApiController extends Controller
     public function getPublications()
     {
         return Publication::all();
+    }
+    
+    public function getEvents()
+    {
+        return Event::all();
     }
 }
