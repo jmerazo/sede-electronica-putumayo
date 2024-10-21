@@ -120,35 +120,37 @@
                         </button>
                     </h2>
                     <div id="collapse{{ $seccion->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $seccion->id }}" data-bs-parent="#accordionExampleTwo">
-                        <div class="body-accordion-govco">
-                            @if (!empty($seccion->descripcion))
-                                <p class="descripcion">{{ nl2br(e($seccion->descripcion)) }}</p>
-                            @endif
+                      <div class="body-accordion-govco">
+                          @if (!empty($seccion->descripcion))
+                              <p class="descripcion">{{ nl2br(e($seccion->descripcion)) }}</p>
+                          @endif
 
-                            @php
-                                $subElementos = DB::table('transparencia')->where('tipo', 'subelemento')->where('id_padre', $seccion->id)->orderBy('orden')->get();
-                            @endphp
+                          @php
+                              // Obtener los subelementos de la sección actual
+                              $subElementos = DB::table('transparencia')->where('tipo', 'subelemento')->where('id_padre', $seccion->id)->orderBy('orden')->get();
+                          @endphp
 
-                            @if ($subElementos->isNotEmpty())
+                          @if ($subElementos->isNotEmpty())
                               <ol>
                                   @foreach ($subElementos as $subElemento)
                                       <li>
-                                        <a href="{{ route('mision', $subElemento->id_padre) }}" class="text-primary">
-                                            {{ $subElemento->titulo }}
-                                        </a>
+                                          <!-- Utilizar el campo 'enlace' para generar el enlace correcto para cada subelemento -->
+                                          <a href="{{ $subElemento->enlace }}" class="text-primary">
+                                              {{ $subElemento->titulo }}
+                                          </a>
                                       </li>
                                   @endforeach
                               </ol>
-                            @else
-                                <p>No hay subelementos disponibles.</p>
-                            @endif
+                          @else
+                              <p>No hay subelementos disponibles.</p>
+                          @endif
 
-                            <!-- Botón para ver más detalles de la sección -->
-                            <a href="{{ route('transparencia.show', ['id' => $seccion->id]) }}" class="btn btn-primary mt-2">
-                                Ver más detalles
-                            </a>
-                        </div>
-                    </div>
+                          <!-- Botón para ver más detalles de la sección -->
+                          <a href="{{ route('transparencia.show', ['id' => $seccion->id]) }}" class="btn btn-primary mt-2">
+                              Ver más detalles
+                          </a>
+                      </div>
+                  </div>
                 </div>
             @endforeach
         @else
