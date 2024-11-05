@@ -22,6 +22,6 @@ class DecisionMakingController extends Controller
                         ->orderBy('entry_date') // Cambia 'title' al nombre correcto de la columna que existe en tu tabla
                         ->paginate(10);
 
-        return view('decision_making_directory', compact('decisions', 'search'));
+        return view('transparencia.subelements.decision_making_directory', compact('decisions', 'search'));
     }
 }

@@ -14,7 +14,12 @@ class TransparenciaController extends Controller
                                  ->orderBy('orden')
                                  ->get();
 
-        return view('transparencia.index', compact('secciones'));
+        $breadcrumbItems = [
+            ['url' => route('home'), 'label' => 'Inicio'],
+            ['url' => route('transparencia.index'), 'label' => 'Transparencia'],
+        ];
+
+        return view('transparencia.index', compact('secciones', 'breadcrumbItems'));
     }
 
     public function show($id)

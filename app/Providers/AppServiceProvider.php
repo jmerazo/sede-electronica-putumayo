@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 use App\View\Components\Navbar;
+use App\View\Composers\BreadcrumbComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,10 +37,12 @@ class AppServiceProvider extends ServiceProvider
             App::setLocale(Session::get('locale'));
         }
 
-        // Compartir los menús con todas las vistas
+        // Compartir los menús con todas las vistas, incluyendo submenús y sub-submenús
         View::composer('*', function ($view) {
-            $menus = Menu::with('submenus')->orderBy('order')->get();
+            $menus = Menu::with('submenus.subsubmenus')->orderBy('order')->get();
             $view->with('menus', $menus);
         });
+
+        View::composer('*', BreadcrumbComposer::class);
     }
 }

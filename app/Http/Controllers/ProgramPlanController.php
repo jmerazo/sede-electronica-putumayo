@@ -18,6 +18,6 @@ class ProgramPlanController extends Controller
                          ->orWhere('theme', 'like', "%{$search}%");
         })->paginate(5);
 
-        return view('program_plans', compact('programPlans', 'search'));
+        return view('transparencia.subelements.program_plans', compact('programPlans', 'search'));
     }
 }

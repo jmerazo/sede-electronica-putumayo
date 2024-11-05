@@ -18,6 +18,6 @@ class ControlEntitiesController extends Controller
         })->paginate(5); // Puedes ajustar el número de registros por página
 
         // Pasar los datos a la vista
-        return view('control_entities', compact('entities', 'search'));
+        return view('transparencia.subelements.control_entities', compact('entities', 'search'));
     }
 }

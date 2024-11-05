@@ -41,6 +41,6 @@ class ServersDirectoryController extends Controller
                 
                 Ingrese al siguiente <a href='https://www.funcionpublica.gov.co/dafpIndexerBHV/hvSigep/index?find=FindNext&query=putumayo&dptoSeleccionado=&entidadSeleccionado=4415&munSeleccionado=&tipoAltaSeleccionado=&bloquearFiltroDptoSeleccionado=&bloquearFiltroEntidadSeleccionado=&bloquearFiltroMunSeleccionado=&bloquearFiltroTipoAltaSeleccionado='>Enlace</a> para consultar la información de cada uno de los servidores públicos y contratistas.";                   
     
-        return view('servers_directory', compact('funcionarios', 'personas', 'sigepInfo', 'search'));
+        return view('transparencia.subelements.servers_directory', compact('funcionarios', 'personas', 'sigepInfo', 'search'));
     }
 }

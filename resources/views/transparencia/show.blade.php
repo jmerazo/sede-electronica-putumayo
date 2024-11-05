@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 
-@section('main-content')
+@section('content')
     <div class="container-ms my-5">
         <h1 class="titulo-personalizado">{{ $seccionData->titulo }}</h1>
         <p>{!! nl2br(e($seccionData->descripcion)) !!}</p>

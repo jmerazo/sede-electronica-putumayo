@@ -22,6 +22,6 @@ class AssociationsController extends Controller
                         ->orderBy('name')
                         ->paginate(5); // Cambia 10 al número de registros por página deseado
 
-        return view('associations_directory', compact('associations', 'search'));
+        return view('transparencia.subelements.associations_directory', compact('associations', 'search'));
     }
 }

@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
     <h1>Decreto Único Reglamentario</h1>
     <p>Los decretos únicos reglamentarios son normas que consolidan la regulación en diversas áreas, y dependiendo del tema, pueden establecer reglas que las Gobernaciones deben cumplir.</p>

@@ -8,6 +8,6 @@ class LeavesLifeController extends Controller
 {
     public function index()
     {
-        return view('leaves_life');
+        return view('transparencia.subelements.leaves_life');
     }
 }

@@ -18,6 +18,6 @@ class DecretoReglamentarioController extends Controller
                          ->orWhere('ambitos_regulados', 'like', "%{$search}%");
         })->paginate(10);
 
-        return view('decretoreglamentario', compact('decretos', 'search'));
+        return view('transparencia.subelements.decretoreglamentario', compact('decretos', 'search'));
     }
 }

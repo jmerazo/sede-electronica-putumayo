@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
-    <h1>Entes y Autoridades que lo Vigilan o Supervisan</h1>
+    <h1>Información Sobre Decisiones que Puede Afectar al Público</h1>
 
     <!-- Formulario de Búsqueda -->
-    <form method="GET" action="{{ route('control_entities') }}" class="mb-3">
+    <form method="GET" action="{{ route('decisions') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
@@ -14,21 +18,19 @@
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>Fecha de Ingreso</th>
                 <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Email</th>
-                <th>Link</th>
+                <th>Descripción</th>
+                <th>Archivo</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($entities as $entity)
+            @foreach($decisions as $decision)
                 <tr>
-                    <td>{{ $entity->name }}</td>
-                    <td>{{ $entity->tipo }}</td>
-                    <td>{{ $entity->mail }}</td>
-                    <td>
-                        <a href="{{ $entity->link }}" target="_blank">{{ $entity->link }}</a>
-                    </td>
+                    <td>{{ $decision->entry_date }}</td>
+                    <td>{{ $decision->name }}</td>
+                    <td>{{ $decision->description }}</td>
+                    <td>{{ $decision->archive }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -36,7 +38,7 @@
 
     <!-- Paginación -->
     <div>
-        {{ $entities->appends(request()->input())->links('vendor.pagination.custom') }}
+        {{ $decisions->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>
 </div>
 @endsection

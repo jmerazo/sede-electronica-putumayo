@@ -22,11 +22,16 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/api.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body>
         <x-accesibility-bar />
         <x-jet-banner />
         <x-navbar />
-        <div class="min-h-screen bg-gray-100">
+        @if (!request()->routeIs('home') && isset($breadcrumbItems) && count($breadcrumbItems) > 0)
+            <div class="container">
+                <x-breadcrumb :breadcrumbItems="$breadcrumbItems" />
+            </div>
+        @endif
+        <div class="min-h-screen">
             @if (Auth::check())
                 @livewire('navigation-menu')
             @endif
@@ -34,13 +39,13 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div>
                         {{ $header }}
                     </div>
                 </header>
             @endif
 
-            <main class="container-centered">
+            <main class="container-centered ">
                 @yield('content')
             </main>
         </div>

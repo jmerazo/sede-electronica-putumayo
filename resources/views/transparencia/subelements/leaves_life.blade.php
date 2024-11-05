@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
     <h1>Directorio SIGEP - Función Pública</h1>
     <p>Puedes consultar el directorio de servidores públicos del SIGEP accediendo al siguiente enlace:</p>
