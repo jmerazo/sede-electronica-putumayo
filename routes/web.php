@@ -20,6 +20,21 @@ use App\Http\Controllers\LawController;
 use App\Http\Controllers\ProgramPlanController;
 use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\DecretoReglamentarioController;
+use App\Http\Controllers\PaaController;
+use App\Http\Controllers\ContractualController;
+use App\Http\Controllers\ExecutionController;
+use App\Http\Controllers\HiringAnualController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\FormalityController;
+use App\Http\Controllers\JudicialNoticeController;
+use App\Http\Controllers\PqrdReportController;
+use App\Http\Controllers\DataProtectionController;
+use App\Http\Controllers\ParticipateController;
+
+
+
+
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -43,6 +58,22 @@ Route::get('/laws', [LawController::class, 'index'])->name('laws');
 Route::get('/program-plans', [ProgramPlanController::class, 'index'])->name('program_plans');
 Route::get('/regulations', [RegulationController::class, 'index'])->name('regulations');
 Route::get('/decretoreglamentario', [DecretoReglamentarioController::class, 'index'])->name('decretoreglamentario');
+Route::get('/paa', [PaaController::class, 'index'])->name('paa');
+Route::get('/contractual', [ContractualController::class, 'index'])->name('contractual');
+Route::get('/execution', [ExecutionController::class, 'index'])->name('execution');
+Route::get('/hiring-anual', [HiringAnualController::class, 'index'])->name('hiring_anual');
+
+Route::get('/calendar', [AppointmentController::class, 'showCalendar'])->name('appointments.calendar');
+Route::get('/form', [AppointmentController::class, 'showForm'])->name('appointments.form');
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+
+Route::get('/formalities', [FormalityController::class, 'index'])->name('formalities.index');
+Route::get('/judicial-notices', [JudicialNoticeController::class, 'index'])->name('judicial_notices.index');
+Route::get('/pqrds-reports', [PqrdReportController::class, 'index'])->name('pqrds_reports.index');
+Route::get('/data-protection', [DataProtectionController::class, 'index'])->name('data_protection');
+Route::get('/participate', [ParticipateController::class, 'index'])->name('participate.index');
+Route::get('/participate/{id}', [ParticipateController::class, 'show'])->name('participate.show');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

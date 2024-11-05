@@ -99,4 +99,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'rmunate/laravel_helpers' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Rmunate\\LaravelHelpers\\Providers\\HelpersServiceProvider',
+    ),
+  ),
 );

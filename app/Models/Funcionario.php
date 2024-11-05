@@ -9,6 +9,9 @@ class Funcionario extends Model
 {
     use HasFactory;
 
-    protected $table = 'funcionarios'; // Nombre de la tabla
-    protected $fillable = ['nombres', 'apellidos', 'cargo', 'dependencias']; // Ajusta los campos según tu tabla
+    protected $table = 'funcionarios';  // Nombre de la tabla en base de datos
+
+    protected $fillable = [
+        'tipo_documento', 'identificacion', 'nombres', 'apellidos', 'cargo', 'dependencias', 'area', 'correo', 'celular',
+    ];
 }

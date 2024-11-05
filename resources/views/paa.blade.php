@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Plan Anual de Adquisiciones (PAA)</h1>
+    <h1>Plan Anual de Adquisiciones</h1>
 
     <!-- Formulario de Búsqueda -->
     <form method="GET" action="{{ route('paa') }}" class="mb-3">
@@ -14,7 +14,7 @@
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
-                <th>Período</th>
+                <th>Periodo</th>
                 <th>Nombre</th>
                 <th>Archivo</th>
             </tr>
@@ -24,7 +24,9 @@
                 <tr>
                     <td>{{ $paa->period }}</td>
                     <td>{{ $paa->name }}</td>
-                    <td><a href="{{ $paa->archive }}" target="_blank">Ver Archivo</a></td>
+                    <td>
+                        <a href="{{ asset('storage/' . $paa->archive) }}" target="_blank">Descargar</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

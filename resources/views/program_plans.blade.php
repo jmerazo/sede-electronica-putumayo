@@ -28,7 +28,13 @@
                     <td>{{ $plan->name }}</td>
                     <td>{{ $plan->tipo }}</td>
                     <td>{{ $plan->theme }}</td>
-                    <td>{{ $plan->link }}</td>
+                    
+
+                    <td>
+                        <a href="{{ asset('storage/' . $plan->link) }}" target="_blank">Ver Archivo</a>
+                    </td>
+
+
                 </tr>
             @endforeach
         </tbody>

@@ -11,9 +11,6 @@ class Paa extends Model
 
     protected $table = 'paa';
 
-    protected $fillable = [
-        'period',
-        'name',
-        'archive'
-    ];
+    // Asegúrate de que los campos aquí coincidan con los de tu tabla
+    protected $fillable = ['period', 'name', 'archive'];
 }
