@@ -1,11 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
-    <h1>Directorio Institucional</h1>
+    <h1>Listado de Leyes</h1>
+    <p>Las leyes establecen derechos, deberes, prohibiciones y permisos con el fin de garantizar el orden, la justicia y la convivencia pacífica en un país.</p>
 
     <!-- Formulario de Búsqueda -->
-    <form method="GET" action="{{ route('directorio') }}" class="mb-3">
+    <form method="GET" action="{{ route('laws') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
@@ -14,19 +19,21 @@
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>Fecha de Expedición</th>
+                <th>Número</th>
                 <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Teléfono</th>
-                <th>Email</th>
+                <th>Tema</th>
+                <th>Enlace</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($directorio as $dependency)
+            @foreach($laws as $law)
                 <tr>
-                    <td>{{ $dependency->name }}</td>
-                    <td>{{ $dependency->description }}</td>
-                    <td>{{ $dependency->cellphone }}</td>
-                    <td>{{ $dependency->email }}</td>
+                    <td>{{ $law->expedition_date }}</td>
+                    <td>{{ $law->number }}</td>
+                    <td>{{ $law->name }}</td>
+                    <td>{{ $law->theme }}</td>
+                    <td><a href="{{ $law->link }}" target="_blank">Ver Ley</a></td>
                 </tr>
             @endforeach
         </tbody>
@@ -34,30 +41,26 @@
 
     <!-- Paginación -->
     <div>
-        {{ $directorio->appends(request()->input())->links('vendor.pagination.custom') }}
+        {{ $laws->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>
 </div>
 @endsection
 
 @push('styles')
 <style>
-    /* Fondo claro para el encabezado de la tabla */
     .thead-light th {
         background-color: #f0f8ff;
         font-weight: bold;
     }
 
-    /* Bordes de la tabla */
     .table-bordered th, .table-bordered td {
         border: 1px solid #dee2e6;
     }
 
-    /* Alineación vertical de celdas */
     .table tbody tr td {
         vertical-align: middle;
     }
 
-    /* Estilos para la paginación */
     .pagination .page-link {
         font-size: 14px;
         padding: 0.5rem 0.75rem;
@@ -70,17 +73,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px; /* Ajusta el tamaño del botón de paginación */
+        width: 30px;
         height: 30px;
         padding: 0;
     }
 
-    .pagination .page-item .page-link svg {
-        width: 12px; /* Cambia el tamaño según sea necesario */
-        height: 12px;
-    }
-
-    /* Limita el tamaño del campo de búsqueda */
     input.form-control {
         max-width: 300px;
     }

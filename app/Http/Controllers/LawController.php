@@ -18,6 +18,6 @@ class LawController extends Controller
                          ->orWhere('theme', 'like', "%{$search}%");
         })->paginate(5);
 
-        return view('laws', compact('laws', 'search'));
+        return view('transparencia.subelements.laws', compact('laws', 'search'));
     }
 }

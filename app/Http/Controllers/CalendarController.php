@@ -10,7 +10,7 @@ class CalendarController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('calendar', compact('events'));
+        return view('transparencia.subelements.calendar', compact('events'));
     }
 
     public function fetchEvents(Request $request)

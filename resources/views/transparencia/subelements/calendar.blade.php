@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
     <h1>Calendario de Actividades y Eventos</h1>
     <div id="calendar"></div>
@@ -10,36 +14,36 @@
 @push('styles')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
 <style>
-    #calendar {
-        max-width: 900px;
-        margin: 0 auto;
-        font-family: 'Montserrat', sans-serif;
-    }
-    .fc-toolbar-title {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #333;
-    }
-    .fc-button-primary {
-        background-color: #004884 !important; /* Color personalizado */
-        border-color: #004884 !important;     /* Borde personalizado */
-        color: #ffffff !important;            /* Color del texto en blanco */
-    }
-    .fc-button-primary:hover {
-        background-color: #003366 !important; /* Color más oscuro al hacer hover */
-        border-color: #003366 !important;
-    }
-    .fc-day-header {
-        color: #004884;
-        font-weight: bold;
-    }
-    .fc-daygrid-day-number {
-        color: #333;
-        font-weight: bold;
-    }
-    .fc-event-title {
-        color: #fff;
-    }
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+.fc-toolbar-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+.fc-button-primary {
+    background-color: #004884 !important; /* Color personalizado */
+    border-color: #004884 !important;     /* Borde personalizado */
+    color: #ffffff !important;            /* Color del texto en blanco */
+}
+.fc-button-primary:hover {
+    background-color: #003366 !important; /* Color más oscuro al hacer hover */
+    border-color: #003366 !important;
+}
+.fc-day-header {
+    color: #004884;
+    font-weight: bold;
+}
+.fc-daygrid-day-number {
+    color: #333;
+    font-weight: bold;
+}
+.fc-event-title {
+    color: #fff;
+}
 </style>
 @endpush
 

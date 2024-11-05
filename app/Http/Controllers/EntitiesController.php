@@ -22,6 +22,6 @@ class EntitiesController extends Controller
                         ->orderBy('name')
                         ->paginate(5); // Cambia 10 al número de registros por página deseado
 
-        return view('entities_directory', compact('entities', 'search'));
+        return view('transparencia.subelements.entities_directory', compact('entities', 'search'));
     }
 }

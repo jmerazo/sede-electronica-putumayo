@@ -1,12 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
-    <h1>Listado de Leyes</h1>
-    <p>Las leyes establecen derechos, deberes, prohibiciones y permisos con el fin de garantizar el orden, la justicia y la convivencia pacífica en un país.</p>
+    <h1>Políticas,Planes, Programas, Lineamientos y Manuales</h1>
 
     <!-- Formulario de Búsqueda -->
-    <form method="GET" action="{{ route('laws') }}" class="mb-3">
+    <form method="GET" action="{{ route('program_plans') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
@@ -16,20 +19,20 @@
         <thead class="thead-light">
             <tr>
                 <th>Fecha de Expedición</th>
-                <th>Número</th>
                 <th>Nombre</th>
-                <th>Tema</th>
-                <th>Enlace</th>
+                <th>Tipo de Norma</th>
+                <th>Temática</th>
+                <th>Link</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($laws as $law)
+            @foreach($programPlans as $plan)
                 <tr>
-                    <td>{{ $law->expedition_date }}</td>
-                    <td>{{ $law->number }}</td>
-                    <td>{{ $law->name }}</td>
-                    <td>{{ $law->theme }}</td>
-                    <td><a href="{{ $law->link }}" target="_blank">Ver Ley</a></td>
+                    <td>{{ $plan->expedition_date }}</td>
+                    <td>{{ $plan->name }}</td>
+                    <td>{{ $plan->tipo }}</td>
+                    <td>{{ $plan->theme }}</td>
+                    <td>{{ $plan->link }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -37,7 +40,7 @@
 
     <!-- Paginación -->
     <div>
-        {{ $laws->appends(request()->input())->links('vendor.pagination.custom') }}
+        {{ $programPlans->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>
 </div>
 @endsection

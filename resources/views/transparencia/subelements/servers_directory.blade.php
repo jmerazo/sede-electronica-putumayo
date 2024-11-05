@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
     <h1 class="mb-4">Directorio de Servidores Públicos, Empleados o Contratistas</h1>
 

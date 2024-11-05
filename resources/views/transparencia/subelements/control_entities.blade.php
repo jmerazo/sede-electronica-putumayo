@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.sidebar')
 
-@section('content')
+@section('sidebar')
+    @include('partials.sidebar', ['secciones' => $secciones])
+@endsection
+
+@section('main-content')
 <div class="container">
-    <h1>Políticas,Planes, Programas, Lineamientos y Manuales</h1>
+    <h1>Entes y Autoridades que lo Vigilan o Supervisan</h1>
 
     <!-- Formulario de Búsqueda -->
-    <form method="GET" action="{{ route('program_plans') }}" class="mb-3">
+    <form method="GET" action="{{ route('control_entities') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
@@ -14,21 +18,21 @@
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
-                <th>Fecha de Expedición</th>
                 <th>Nombre</th>
-                <th>Tipo de Norma</th>
-                <th>Temática</th>
+                <th>Tipo</th>
+                <th>Email</th>
                 <th>Link</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($programPlans as $plan)
+            @foreach($entities as $entity)
                 <tr>
-                    <td>{{ $plan->expedition_date }}</td>
-                    <td>{{ $plan->name }}</td>
-                    <td>{{ $plan->tipo }}</td>
-                    <td>{{ $plan->theme }}</td>
-                    <td>{{ $plan->link }}</td>
+                    <td>{{ $entity->name }}</td>
+                    <td>{{ $entity->tipo }}</td>
+                    <td>{{ $entity->mail }}</td>
+                    <td>
+                        <a href="{{ $entity->link }}" target="_blank">{{ $entity->link }}</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -36,7 +40,7 @@
 
     <!-- Paginación -->
     <div>
-        {{ $programPlans->appends(request()->input())->links('vendor.pagination.custom') }}
+        {{ $entities->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>
 </div>
 @endsection

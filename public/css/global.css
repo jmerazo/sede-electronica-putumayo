@@ -144,7 +144,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Navegación */
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,14 +152,14 @@ input:focus, select:focus, textarea:focus {
   background-color: var(--govco-primary-color);
   border-bottom: 2px solid var(--govco-secondary-color);
   font-family: var(--govco-font-primary);
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
 }
 
 .navbar .nav-links a {
   color: var(--govco-white-color);
   margin-right: 1rem;
   transition: color 0.3s ease;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
 }
 
 .navbar .nav-links a:hover {
@@ -172,16 +172,16 @@ input:focus, select:focus, textarea:focus {
   border: none;
   border-radius: var(--govco-border-radius);
   padding: 0.5rem 1rem;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   cursor: pointer;
 }
 
 .navbar .login-btn:hover {
   background-color: var(--govco-accent-color);
-}
+} */
 
 .min-h-screen {
-  margin-top: 4rem; /* Ajusta según el alto de la barra de navegación */
+  margin-bottom: 2rem;
 }
 
 /* Modo de alto contraste */

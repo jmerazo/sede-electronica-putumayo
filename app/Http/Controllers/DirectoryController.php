@@ -20,7 +20,7 @@ class DirectoryController extends Controller
                         ->paginate(10); // Cambia 10 por el número de elementos que quieras por página
 
         // Pasar los datos y el término de búsqueda a la vista
-        return view('directorio', compact('directorio', 'search'));
+        return view('transparencia.subelements.directory', compact('directorio', 'search'));
     }
 }
 

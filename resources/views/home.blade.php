@@ -14,4 +14,5 @@
 
     <x-slider :images="$images" />
     <x-news :publications="$publications" />
+    <x-interest-links />
 @endsection

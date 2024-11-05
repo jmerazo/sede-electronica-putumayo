@@ -1,10 +1,73 @@
-<style>
+<header class="navbar-container">
+    <div class="navbar-top">
+        <!-- Logo de GOV.CO -->
+        <div class="govco-logo">
+            <a href="https://www.gov.co" target="_blank">
+                <img src="/logos/logo_govco.png" alt="Logo GOV.CO">
+            </a>
+        </div>
+        <div class="actions">
+            <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">
+                {{ __('navbar.language') }}
+            </button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{{ route('home') }}">
+                <img src="/logos/logo_gobernacion_min.png" alt="Gobernación del Putumayo">
+            </a>
+        </div>
+        <div class="search__login">
+            <div class="search-bar">
+                <input type="text" placeholder="{{ __('navbar.search_placeholder') }}">
+                <button type="submit">
+                    <img src="/icons/search.svg" alt="{{ __('navbar.search_placeholder') }}" width="16" height="16">
+                </button>
+            </div>
+            <div class="navbar__login">
+                <a href="{{ route('login') }}" class="login__btn">{{ __('navbar.login') }}</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="navbar-bottom">
+        <div class="nav-links">
+            @foreach ($menus as $menu)
+                <div class="menu-item {{ request()->is($menu->route ?? '') ? 'selected' : '' }}">
+                    <a href="{{ url($menu->route ?? '#') }}">{{ $menu->name }}</a>
+
+                    @if ($menu->submenus->isNotEmpty())
+                        <div class="submenu">
+                            @foreach ($menu->submenus as $submenu)
+                                <div class="submenu-item {{ request()->is($submenu->route ?? '') ? 'selected' : '' }}">
+                                    <a href="{{ url($submenu->route ?? '#') }}">{{ $submenu->name }}</a>
+
+                                    @if ($submenu->subsubmenus->isNotEmpty())
+                                        <div class="subsubmenu">
+                                            @foreach ($submenu->subsubmenus as $subsubmenu)
+                                                <a href="{{ url($subsubmenu->link ?? '#') }}">{{ $subsubmenu->name }}</a>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            @endforeach
+        </div>
+    </div>
+</header>
+
+<style scoped>
 .navbar-container {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     background-color: var(--govco-secondary-color);
+    height: 208px;
 }
 
 .navbar-top {
@@ -211,6 +274,57 @@
 }
 
 
+/* Estilo del sub-submenú */
+.subsubmenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 225px;
+    background-color: var(--govco-gray-menu);
+    border: 1px solid var(--govco-border-color);
+    border-radius: var(--govco-border-radius);
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 20; /* Mayor que el submenú para estar encima */
+}
+
+@media (max-width: 768px) {
+    .subsubmenu {
+        width: 100%; /* Ajuste de ancho para pantallas pequeñas */
+    }
+}
+
+/* Asegura que el sub-submenú se muestre alineado con el submenú correspondiente */
+.submenu-item {
+    position: relative; /* Para posicionar el sub-submenú relativo a cada elemento de submenú */
+}
+
+.subsubmenu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: var(--govco-gray-menu);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.subsubmenu a:hover {
+    background-color: var(--govco-secondary-color);
+    color: var(--govco-white-color);
+}
+
+/* Estilo de submenú cuando está activo */
+.submenu-item.active, .submenu-item:hover {
+    background-color: var(--govco-secondary-color); /* Cambia el color de fondo para mostrar que está activo */
+    color: var(--govco-white-color); /* Cambia el color del texto */
+}
+
+/* Mostrar el sub-submenú al pasar el mouse sobre el submenú específico */
+.submenu-item:hover .subsubmenu {
+    display: block;
+}
+
 .menu-item:hover .submenu {
     display: block;
 }
@@ -234,12 +348,6 @@
     border-radius: 4px; /* Opcional: añade esquinas redondeadas */
     box-sizing: border-box; /* Asegura que el borde no afecte el tamaño del elemento */
 }
-
-/* Compensar la altura de la navbar completa en el contenedor principal */
-body {
-    padding-top: 135px; /* Ajusta según la altura total de navbar-top + navbar + navbar-bottom */
-}
-
 /* Estilos de alto contraste para la barra de navegación */
 
 /* Contenedor principal de la navbar */
@@ -358,56 +466,3 @@ body.high-contrast .footer a:hover {
     color: #fff;
 }
 </style>
-
-<header class="navbar-container">
-    <div class="navbar-top">
-        <!-- Logo de GOV.CO -->
-        <div class="govco-logo">
-            <a href="https://www.gov.co" target="_blank">
-                <img src="/logos/logo_govco.png" alt="Logo GOV.CO">
-            </a>
-        </div>
-        <div class="actions">
-            <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">
-                {{ __('navbar.language') }}
-            </button>
-        </div>
-    </div>
-
-    <nav class="navbar">
-        <div class="logo">
-            <a href="{{ route('home') }}">
-                <img src="/logos/logo_gobernacion_min.png" alt="Gobernación del Putumayo">
-            </a>
-        </div>
-        <div class="search__login">
-            <div class="search-bar">
-                <input type="text" placeholder="{{ __('navbar.search_placeholder') }}">
-                <button type="submit">
-                    <img src="/icons/search.svg" alt="{{ __('navbar.search_placeholder') }}" width="16" height="16">
-                </button>
-            </div>
-            <div class="navbar__login">
-                <a href="{{ route('login') }}" class="login__btn">{{ __('navbar.login') }}</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="navbar-bottom">
-        <div class="nav-links">
-            @foreach ($menus as $menu)
-                <div class="menu-item {{ request()->is($menu->route) ? 'selected' : '' }}">
-                    <a href="{{ url($menu->route) }}">{{ $menu->name }}</a>
-
-                    @if ($menu->submenus->isNotEmpty())
-                        <div class="submenu">
-                            @foreach ($menu->submenus as $submenu)
-                                <a href="{{ url($submenu->route) }}">{{ $submenu->name }}</a>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-            @endforeach
-        </div>
-    </div>
-</header>

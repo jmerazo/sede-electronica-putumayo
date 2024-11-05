@@ -6,53 +6,6 @@
     <!-- Sidebar para pasar los subelementos -->
     @include('partials.sidebar', ['secciones' => $secciones])
 @endsection
-<style>
-/* Estilos globales */
-body {
-    font-family: 'Arial', sans-serif;
-    text-align: justify !important; /* Forzar la justificación del texto */
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Clase personalizada para los títulos */
-.titulo-personalizado {
-    font-weight: bold;
-    color: #004884; /* Cambia este color al que prefieras */
-    margin-bottom: 20px;
-}
-
-.container-ms {
-    border: 1px solid #ddd; /* Borde del contenedor */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto de elevación */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-    margin: 0 auto; /* Para centrar el contenedor horizontalmente */
-    
-}
-
-/* Espaciado */
-.my-5 {
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
-}
-
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .container p {
-        font-size: 1rem;
-    }
-
-    .container {
-        padding: 20px;
-    }
-}
-</style>
 
 @section('main-content')
 <div class="container-ms">
