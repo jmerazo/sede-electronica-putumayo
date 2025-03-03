@@ -28,6 +28,15 @@ class PublicationsController extends Controller
         return view('publications', compact('publications', 'types'));
     }
 
+    public function show($id)
+    {
+        // Buscar la publicación por ID
+        $publication = Publications::with('type')->findOrFail($id);
+
+        // Retornar la vista con la publicación encontrada
+        return view('publications.show', compact('publication'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

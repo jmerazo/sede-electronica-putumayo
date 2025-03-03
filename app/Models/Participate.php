@@ -9,6 +9,11 @@ class Participate extends Model
 {
     use HasFactory;
 
-    protected $table = 'participate'; // Define el nombre de la tabla
-    protected $fillable = ['title', 'description', 'image']; // Campos asignables masivamente
+    protected $fillable = ['title', 'description', 'image'];
+
+    // Relación con ParticipateSection
+    public function sections()
+    {
+        return $this->hasMany(ParticipateSection::class);
+    }
 }

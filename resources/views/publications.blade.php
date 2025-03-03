@@ -1,25 +1,19 @@
 @extends('layouts.app')
 
+@section('title', $publication->title)
+
 @section('content')
-    <h1>Noticias</h1>
+    <div class="container py-5">
+        <h1 class="text-center">{{ $publication->title }}</h1>
 
-    <!-- Formulario de búsqueda y filtro -->
-    <form method="GET" action="{{ route('publications.index') }}">
-        <input type="text" name="search" placeholder="Buscar..." value="{{ request()->search }}">
-        <select name="type">
-            <option value="">Todos los tipos</option>
-            @foreach($types as $type)
-                <option value="{{ $type->id }}" {{ request()->type == $type->id ? 'selected' : '' }}>
-                    {{ $type->name }}
-                </option>
-            @endforeach
-        </select>
-        <button type="submit">Filtrar</button>
-    </form>
-
-    <!-- Llamar al componente y pasarle las publicaciones -->
-    <x-news :publications="$publications" />
-
-    <!-- Enlaces de paginación -->
-    {{ $publications->links() }}
+        <div class="card shadow-lg mb-4">
+            @if($publication->image)
+                <img src="{{ asset('storage/' . $publication->image) }}" class="card-img-top" alt="{{ $publication->title }}">
+            @endif
+            <div class="card-body">
+                <p class="text-muted">Publicado el {{ \Carbon\Carbon::parse($publication->date)->format('d/m/Y') }}</p>
+                <p class="card-text">{{ $publication->description }}</p>
+            </div>
+        </div>
+    </div>
 @endsection

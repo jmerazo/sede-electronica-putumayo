@@ -2,17 +2,23 @@
     <h2 class="news-title">Últimas Noticias</h2>
     
     @if($publications->isNotEmpty())
+        @php
+            $firstPublication = $publications->first();
+        @endphp
+
         <div class="news-container">
             <!-- Noticia destacada -->
-            <div class="featured-news">
-                <img src="{{ asset('storage/' . $publications->first()->image) }}" alt="{{ $publications->first()->title }}" class="featured-image">
-                <div class="featured-content">
-                    <h3 class="featured-title">{{ $publications->first()->title }}</h3>
-                    <p class="featured-date">{{ \Carbon\Carbon::parse($publications->first()->date)->format('d/m/Y') }}</p>
-                    <p class="featured-description">{{ Str::limit($publications->first()->description, 200) }}</p>
-                    <a href="{{ route('publications.show', $publications->first()->id) }}" class="featured-read-more">Leer más</a>
+            @if($firstPublication)
+                <div class="featured-news">
+                    <img src="{{ asset('storage/' . $firstPublication->image) }}" alt="{{ $firstPublication->title }}" class="featured-image">
+                    <div class="featured-content">
+                        <h3 class="featured-title">{{ $firstPublication->title }}</h3>
+                        <p class="featured-date">{{ \Carbon\Carbon::parse($firstPublication->date)->format('d/m/Y') }}</p>
+                        <p class="featured-description">{{ Str::limit($firstPublication->description, 200) }}</p>
+                        <a href="{{ route('publications.show', $firstPublication->id) }}" class="featured-read-more">Leer más</a>
+                    </div>
                 </div>
-            </div>
+            @endif
 
             <!-- Lista de noticias pequeñas -->
             <div class="news-list">
@@ -33,7 +39,7 @@
 
     <!-- Botón de ver más noticias -->
     <div class="news-more">
-        <a href="{{ route('publications') }}" class="news-more-btn">Ver más noticias</a>
+        <a href="{{ route('publications.index') }}" class="news-more-btn">Ver más noticias</a>
     </div>
 </div>
 

@@ -32,12 +32,16 @@ use App\Http\Controllers\JudicialNoticeController;
 use App\Http\Controllers\PqrdReportController;
 use App\Http\Controllers\DataProtectionController;
 use App\Http\Controllers\ParticipateController;
+use App\Http\Controllers\CommunicationsController;
+use App\Http\Controllers\GabineteController;
+use App\Http\Controllers\MicrositioController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menu/{id}', [MenuController::class, 'show'])->name('menu.show');
 Route::get('/submenu/{id}', [SubmenuController::class, 'show'])->name('submenu.show');
 Route::get('/subsubmenu/{id}', [SubsubmenuController::class, 'show'])->name('subsubmenu.show');
-Route::get('/publications', [PublicationsController::class, 'index'])->name('publications');
+Route::get('/publications', [PublicationsController::class, 'index'])->name('publications.index');
 Route::get('/publications/{id}', [PublicationsController::class, 'show'])->name('publications.show');
 Route::get('/set-locale/{lang}', [App\Http\Controllers\LanguageController::class, 'setLocale'])->name('setLocale');
 Route::get('/transparencia', [TransparenciaController::class, 'index'])->name('transparencia.index');
@@ -73,7 +77,21 @@ Route::get('/pqrds-reports', [PqrdReportController::class, 'index'])->name('pqrd
 Route::get('/data-protection', [DataProtectionController::class, 'index'])->name('data_protection');
 Route::get('/participate', [ParticipateController::class, 'index'])->name('participate.index');
 Route::get('/participate/{id}', [ParticipateController::class, 'show'])->name('participate.show');
+Route::get('/communications', [CommunicationsController::class, 'index'])->name('communications.index');
+Route::get('/communications/{id}', [CommunicationsController::class, 'show'])->name('communications.show');
+Route::get('/gabinete/{cargoTipo}', [GabineteController::class, 'index'])->name('gabinete.index');
+Route::get('/gabinete/{cargoTipo}/{id}', [GabineteController::class, 'show'])->name('gabinete.show');
 
+Route::prefix('micrositio1')->group(function () {
+    Route::get('/', [MicrositioController::class, 'index'])->name('micrositio1.index');
+    Route::get('/about', [MicrositioController::class, 'about'])->name('micrositio1.about');
+    Route::get('/contact', [MicrositioController::class, 'contact'])->name('micrositio1.contact');
+});
+
+Route::prefix('micrositio2')->group(function () {
+    Route::get('/', [MicrositioController::class, 'index'])->name('micrositio2.index');
+    Route::get('/contact', [MicrositioController::class, 'contact'])->name('micrositio2.contact');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
