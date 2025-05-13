@@ -1,9 +1,6 @@
-@extends('layouts.sidebar')
-
+@extends('transparencia.shared.sidebar')
 @section('title', 'Misión')
-
 @section('sidebar')
-    <!-- Sidebar para pasar los subelementos -->
     @include('partials.sidebar', ['secciones' => $secciones])
 @endsection
 

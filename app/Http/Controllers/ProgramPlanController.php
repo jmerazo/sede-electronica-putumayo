@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,8 +9,6 @@ class ProgramPlanController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
-        // Consultar los datos de la tabla 'program_plans' con búsqueda y paginación
         $programPlans = ProgramPlan::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%")
                          ->orWhere('tipo', 'like', "%{$search}%")

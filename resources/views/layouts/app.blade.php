@@ -7,14 +7,13 @@
 
         <title>{{ config('app.name', 'Putumayo') }}</title>
         <link rel="stylesheet" href="{{ asset('/css/global.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.css">
         
-
         <!-- Styles -->
         @livewireStyles
 
@@ -22,38 +21,64 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/api.js') }}" defer></script>
     </head>
-    <body>
+    <body class="{{ request()->is('dashboard*') ? 'dashboard-layout' : 'public-layout' }}">
         <x-accesibility-bar />
         <x-jet-banner />
-        <x-navbar />
-        @if (!request()->routeIs('home') && isset($breadcrumbItems) && count($breadcrumbItems) > 0)
-            <div class="container">
-                <x-breadcrumb :breadcrumbItems="$breadcrumbItems" />
-            </div>
+
+        @if (!request()->is('dashboard*'))
+            <x-navbar />
         @endif
-        <div class="min-h-screen">
-            @if (Auth::check())
-                @livewire('navigation-menu')
+
+        <!-- Contenedor principal con clase flex -->
+        <div id="container">
+            @if (Auth::check() && request()->is('dashboard*'))
+                @livewire('sidebar-menu')
             @endif
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div>
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            <!-- Contenido Principal -->
+            <div id="main-content">
+                <!-- Page Heading -->
+                @if (isset($header))
+                    <header class="bg-white shadow">
+                        <div>
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endif
 
-            <main class="container-centered ">
-                @yield('content')
-            </main>
+                <main class="container-centered">
+                    @yield('content')
+                </main>
+            </div>
         </div>
-        <x-footer />
+
+        @if (!request()->is('dashboard*'))
+            <x-footer />
+        @endif
+        
         @stack('modals')
         @livewireScripts
         @stack('scripts')
+        <script>
+            function toggleSidebar() {
+                let sidebar = document.getElementById("sidebar");
+                let mainContent = document.getElementById("main-content");
+                let body = document.body;
+
+                sidebar.classList.toggle("collapsed");
+                body.classList.toggle("sidebar-collapsed");
+
+                // Ajustar el ancho del contenido dinámicamente
+                if (sidebar.classList.contains("collapsed")) {
+                    mainContent.style.width = "calc(100% - 80px)";
+                } else {
+                    mainContent.style.width = "calc(100% - 260px)";
+                }
+            }
+        </script>
     </body>
 </html>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartist/dist/chartist.min.js"></script>

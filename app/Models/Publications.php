@@ -9,9 +9,10 @@ class Publications extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'image', 'document', 'user_id', 'type_id', 'state', 'date', 'date_start', 'date_end'];
-    public function type()
+    protected $fillable = ['type_id', 'title'];
+
+    public function publications()
     {
-        return $this->belongsTo(TypePublications::class, 'type_id', 'id');
+        return $this->belongsTo(Publications::class);
     }
 }

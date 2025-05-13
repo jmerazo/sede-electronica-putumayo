@@ -1,5 +1,4 @@
-@extends('layouts.sidebar')
-
+@extends('transparencia.shared.sidebar')
 @section('sidebar')
     @include('partials.sidebar', ['secciones' => $secciones])
 @endsection

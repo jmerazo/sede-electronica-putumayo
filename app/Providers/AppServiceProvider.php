@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
+use App\Models\Module;
 use App\View\Components\Navbar;
 use App\View\Composers\BreadcrumbComposer;
 
@@ -44,5 +46,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('*', BreadcrumbComposer::class);
+
+        View::composer('*', function ($view) {
+            if (Auth::check()) {
+                // Cargar módulos con sus submódulos
+                $modules = Auth::user()->modules()->with('submodules')->get();
+                $view->with('modules', $modules);
+            }
+        });
     }
 }

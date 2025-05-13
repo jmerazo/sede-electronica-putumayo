@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,10 +8,35 @@ class Publication extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type_id', 'title'];
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'document',
+        'user_id',
+        'type_id',
+        'state',
+        'date',
+        'date_start',
+        'date_end'
+    ];
 
-    public function publications()
+    public $timestamps = false;
+
+    protected $casts = [
+        'date' => 'datetime',
+        'date_start' => 'datetime',
+        'date_end' => 'datetime',
+        'state' => 'boolean',
+    ];
+
+    public function type()
     {
-        return $this->belongsTo(Publication::class);
+        return $this->belongsTo(TypePublication::class, 'type_id');
+    }
+
+    public function scopeActiveOfType($query, $typeId)
+    {
+        return $query->where('type_id', $typeId)->where('state', 1);
     }
 }

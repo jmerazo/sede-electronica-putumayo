@@ -225,23 +225,30 @@ body.high-contrast .card-header {
   border-bottom: 1px solid #fff;
 }
 
-/* Clase global para centrar el contenido con márgenes */
-.container-centered {
+/* Aplicar la clase solo en vistas fuera del dashboard */
+.public-layout .container-centered {
   margin-left: 6rem;
   margin-right: 6rem;
-  max-width: 100%; /* Asegurarse de que no se desborde del contenedor */
+  max-width: 100%; /* Asegurar que no se desborde */
 }
 
-/* Asegurarse de que el contenido en pantallas pequeñas sea responsivo */
+/* Dentro del dashboard, resetear los estilos para evitar desplazamientos */
+.dashboard-layout .container-centered {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+/* Asegurar responsividad en pantallas más pequeñas */
 @media (max-width: 1200px) {
-  .container-centered {
+  .public-layout .container-centered {
       margin-left: 3rem; /* Reducir márgenes en pantallas más pequeñas */
       margin-right: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .container-centered {
+  .public-layout .container-centered {
       margin-left: 1.5rem; /* Márgenes más pequeños para móviles */
       margin-right: 1.5rem;
   }
@@ -249,8 +256,227 @@ body.high-contrast .card-header {
 
 /* Si deseas quitar los márgenes en pantallas muy pequeñas */
 @media (max-width: 576px) {
-  .container-centered {
+  .public-layout .container-centered {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
   }
+}
+
+/* Paginator */
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination a, .pagination span {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--govco-primary-color);
+  border: 1px solid var(--govco-border-color);
+  border-radius: var(--govco-border-radius);
+  background: var(--govco-white-color);
+}
+
+.pagination a:hover {
+  background: var(--govco-secondary-color);
+  color: var(--govco-white-color);
+}
+
+.pagination .active span {
+  background: var(--govco-primary-color);
+  color: var(--govco-white-color);
+  font-weight: bold;
+}
+
+.dashboard-layout #main-content {
+  position: relative;
+  width: calc(100% - 250px);
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+  overflow: auto;
+}
+
+/* .dashboard-layout.sidebar-collapsed #main-content {
+  width: calc(100% - 80px);
+  margin-left: 80px;
+}
+ */
+/* Modal */
+/* Modal: Overlay (fondo oscuro) */
+.modal-overlay-edit, .modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Contenedor del Modal */
+.modal-content-edit, .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px; /* Puedes ajustar si lo necesitas más ancho */
+  width: 100%;
+  max-height: 90vh; /* 👈 altura máxima relativa a la ventana */
+  overflow-y: auto; /* 👈 permite desplazarse si se pasa la altura */
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo General para Formularios dentro de los Modales */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px; /* Espacio uniforme entre los campos */
+}
+
+/* Estilos para Labels en Todos los Modales */
+.modal-content label {
+  font-weight: bold;
+  text-align: left;
+  display: block;
+}
+
+/* Inputs dentro de los Modales */
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Botón de Guardar (Aplicado a Todos los Modales) */
+.btn-submit {
+  background: var(--govco-primary-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-submit:hover {
+  background: var(--govco-secondary-color);
+}
+
+/* Botón de Cerrar Modal */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Barra */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c4c5c7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #004085;
+  border-radius: 10px;
+}
+
+.btn-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--govco-accent-color);
+  color: var(--govco-white-color);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: var(--govco-box-shadow);
+}
+
+.btn-floating:hover {
+  background-color: var(--govco-secondary-color);
+  color: white
+}
+
+.btn-floating-file {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: var(--govco-accent-color);
+  color: var(--govco-white-color);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: var(--govco-box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-floating-file:hover {
+  background-color: var(--govco-secondary-color);
+  color: white;
+}
+
+.btn-floating-file img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.btn-floating-download {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  background-color: var(--govco-accent-color);
+  color: var(--govco-white-color);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: var(--govco-box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-floating-download:hover {
+  background-color: var(--govco-secondary-color);
+  color: white;
+}
+
+.btn-floating-download img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }

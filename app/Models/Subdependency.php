@@ -8,7 +8,11 @@ class Subdependency extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dependency_id', 'name', 'route'];
+    protected $fillable = [
+        'dependency_id', 
+        'name', 
+        'route'
+    ];
 
     public function dependency()
     {

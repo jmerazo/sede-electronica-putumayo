@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('transparencia.shared.sidebar')
 
 @section('sidebar')
     @include('partials.sidebar', ['secciones' => $secciones])
@@ -8,14 +8,10 @@
 <div class="container">
     <h1>Listado de Leyes</h1>
     <p>Las leyes establecen derechos, deberes, prohibiciones y permisos con el fin de garantizar el orden, la justicia y la convivencia pacífica en un país.</p>
-
-    <!-- Formulario de Búsqueda -->
     <form method="GET" action="{{ route('laws') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
-
-    <!-- Tabla de Resultados -->
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
@@ -38,8 +34,6 @@
             @endforeach
         </tbody>
     </table>
-
-    <!-- Paginación -->
     <div>
         {{ $laws->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>

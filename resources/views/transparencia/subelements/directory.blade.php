@@ -1,5 +1,4 @@
-@extends('layouts.sidebar')
-
+@extends('transparencia.shared.sidebar')
 @section('sidebar')
     @include('partials.sidebar', ['secciones' => $secciones])
 @endsection
@@ -7,14 +6,10 @@
 @section('main-content')
 <div class="container">
     <h1>Directorio Institucional</h1>
-
-    <!-- Formulario de Búsqueda -->
-    <form method="GET" action="{{ route('directorio') }}" class="mb-3">
+    <form method="GET" action="{{ route('directory') }}" class="mb-3">
         <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control" />
         <button type="submit" class="btn btn-primary mt-2">Buscar</button>
     </form>
-
-    <!-- Tabla de Resultados -->
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
@@ -25,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($directorio as $dependency)
+            @foreach($directory as $dependency)
                 <tr>
                     <td>{{ $dependency->name }}</td>
                     <td>{{ $dependency->description }}</td>
@@ -35,10 +30,8 @@
             @endforeach
         </tbody>
     </table>
-
-    <!-- Paginación -->
     <div>
-        {{ $directorio->appends(request()->input())->links('vendor.pagination.custom') }}
+        {{ $directory->appends(request()->input())->links('vendor.pagination.custom') }}
     </div>
 </div>
 @endsection

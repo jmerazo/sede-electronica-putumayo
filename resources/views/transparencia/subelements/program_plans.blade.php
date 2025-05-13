@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('transparencia.shared.sidebar')
 
 @section('sidebar')
     @include('partials.sidebar', ['secciones' => $secciones])
@@ -6,7 +6,7 @@
 
 @section('main-content')
 <div class="container">
-    <h1>Políticas,Planes, Programas, Lineamientos y Manuales</h1>
+    <h1>Políticas, Planes, Programas, Lineamientos y Manuales</h1>
 
     <!-- Formulario de Búsqueda -->
     <form method="GET" action="{{ route('program_plans') }}" class="mb-3">

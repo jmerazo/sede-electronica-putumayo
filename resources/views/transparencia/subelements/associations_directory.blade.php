@@ -1,5 +1,4 @@
-@extends('layouts.sidebar')
-
+@extends('transparencia.shared.sidebar')
 @section('sidebar')
     @include('partials.sidebar', ['secciones' => $secciones])
 @endsection
@@ -7,8 +6,6 @@
 @section('main-content')
 <div class="container">
     <h1>Directorio de Agremiaciones o Asociaciones</h1>
-
-    <!-- Buscador -->
     <form method="GET" action="{{ route('associations_directory') }}" class="mb-3">
         <div class="search-container">
             <label for="show">Mostrar</label>
