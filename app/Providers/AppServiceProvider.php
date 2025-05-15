@@ -11,6 +11,7 @@ use App\Models\Menu;
 use App\Models\Module;
 use App\View\Components\Navbar;
 use App\View\Composers\BreadcrumbComposer;
+use App\Models\EntitySetting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,6 +54,12 @@ class AppServiceProvider extends ServiceProvider
                 $modules = Auth::user()->modules()->with('submodules')->get();
                 $view->with('modules', $modules);
             }
+        });
+
+        View::composer('*', function ($view) {
+            $settings = EntitySetting::first();    
+            $view->with('entityName', $settings?->entity_name ?? 'Entidad por defecto');
+            $view->with('entityLogo', $settings?->logo_path ?? 'default.png');
         });
     }
 }

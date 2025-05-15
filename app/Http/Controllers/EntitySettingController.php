@@ -102,4 +102,10 @@ class EntitySettingController extends Controller
             return response()->json(['message' => 'Configuración eliminada correctamente.']);
         }
     }
+
+    public function entitysettings()
+    {
+        $settings = EntitySetting::first();
+        return response()->json($settings);
+    }
 }

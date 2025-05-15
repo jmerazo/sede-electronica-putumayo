@@ -36,6 +36,14 @@ use App\Http\Controllers\EntitySettingController;
 use App\Http\Controllers\LocateController;
 use App\Http\Controllers\GovermentController;
 use App\Http\Controllers\MipgController;
+use App\Http\Controllers\OAuthController;
+use App\Models\EntitySetting;
+
+// Auth
+Route::get('/login/google', [OAuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [OAuthController::class, 'handleGoogleCallback']);
+Route::get('/login/outlook', [OAuthController::class, 'redirectToOutlook'])->name('login.outlook');
+Route::get('/login/outlook/callback', [OAuthController::class, 'handleOutlookCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menu/{id}', [MenuController::class, 'show'])->name('menu.show');
@@ -68,6 +76,9 @@ Route::get('/locates/cities/{department_id}', [LocateController::class, 'getCiti
 // Goverment
 Route::get('/cabinet/{typeCharge}', [GovermentController::class, 'governorIndex'])->name('cabinet.index');
 Route::get('/cabinet/{typeCharge}/{id}', [GovermentController::class, 'governorShow'])->name('cabinet.show');
+
+// Settings
+Route::get('/entity/settings', [EntitySettingController::class, 'entitysettings'])->name('entitysettings');
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -288,6 +299,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
     Route::post('/mipg/{id}/assign-area', [MipgController::class, 'assignArea']);
     Route::get('/mipg/dependency-summary', [MipgController::class, 'dependencySummary']);
     Route::get('/mipg/type-summary', [MipgController::class, 'typeSummary']);
+    Route::patch('/mipg/{id}/toggle-visibility', [MipgController::class, 'toggleVisibility'])->name('mipg.toggle-visibility');
     Route::resource('mipg', MipgController::class)->names([
         'index'   => 'dashboard.mipg.index',
         'create'  => 'dashboard.mipg.create',

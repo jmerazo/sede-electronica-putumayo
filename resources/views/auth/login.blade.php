@@ -1,154 +1,299 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="login-card">
-    <h2>Inicio de Sesión</h2>
-
-    @if (session('status'))
-        <div class="status-message">
-            {{ session('status') }}
-        </div>
-    @endif
-
-    <!-- Login Form -->
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Input -->
-        <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" required autofocus>
-        </div>
-
-        <!-- Password Input -->
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <!-- Remember Me Checkbox -->
-        <div class="form-group remember-me">
-            <input type="checkbox" id="remember_me" name="remember">
-            <label for="remember_me">Recordarme</label>
-        </div>
-
-        <!-- Forgot Password Link and Submit Button -->
-        <div class="form-group">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="forgot-password">¿Olvidaste tu contraseña?</a>
+<div class="govco-login-layout">
+    <div class="govco-login-left">
+        <div class="form-container">
+            <div class="entity-header">
+                <img src="{{ asset($entityLogo) }}" class="govco-logo" alt="Logo {{ $entityName }}">
+                <span class="entity-name">{{ $entityName }}</span>
+            </div>
+            <h2>Inicio de Sesión</h2>
+            @if (session('status'))
+                <div class="status-message">{{ session('status') }}</div>
             @endif
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                </div>
+
+                <div class="form-aux">
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
+                    @endif
+                </div>
+
+                <button type="submit" class="login-button">Iniciar Sesión</button>
+            </form>
+
+            <div class="divider">o continuar con</div>
+
+            <div class="social-login">
+                <a href="{{ route('login.google') }}" class="social-btn">
+                    <img src="{{ asset('logos/google.png') }}" alt="Google"> Google
+                </a>
+                <a href="{{ route('login.outlook') }}" class="social-btn outlook">
+                    <img src="{{ asset('logos/outlook.png') }}" alt="Outlook"> Outlook
+                </a>
+            </div>
+
+            <div class="signup-note">
+                ¿No tienes una cuenta? <a href="#">Regístrate</a>
+            </div>
         </div>
-        <div class="form-group">
-            <button type="submit" class="button">Ingresar</button>
+    </div>
+
+    <div class="govco-login-right">
+        <div class="overlay-content">
+            <div class="overlay-text">
+                <h3>Una nueva forma de<br>transformar lo público<br>con tecnología e innovación.</h3>
+                <a href="#" class="learn-more">Conoce más</a>
+            </div>
+            <div class="overlay-image">
+                <img src="{{ asset('img/auth/auth-white.svg') }}" alt="Ilustración" />
+            </div>
         </div>
-    </form>
+    </div>
 </div>
+
 <style>
-/* Estilos base y centrado de página */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e5e5e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
 }
 
-/* Tarjeta de inicio de sesión */
-.login-card {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.govco-login-layout {
+    display: flex;
+    height: 100vh;
     width: 100%;
-    max-width: 380px;
-    text-align: center;
 }
 
-/* Título */
-.login-card h2 {
-    font-size: 1.8rem;
-    color: #004170;
+.govco-login-left {
+    width: 50%;
+    background: radial-gradient(circle at top left, #004884 0%, #002d4a 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.entity-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-/* Grupo de formulario */
+.govco-logo {
+    width: 60px;
+    margin-bottom: 1rem;
+}
+
+.entity-name {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
-    text-align: left;
 }
-
-/* Etiquetas */
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+label {
     font-size: 0.9rem;
-    color: #333;
+    color: #dce3ea; /* Gris claro-legible sobre azul */
+    margin-bottom: 0.4rem;
+    display: block;
 }
-
-/* Campos de entrada */
-.form-group input[type="email"],
-.form-group input[type="password"] {
+.input-icon {
+    position: relative;
+}
+.input-icon i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+.input-icon input {
     width: 100%;
-    padding: 0.6rem;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    background: #102e47;
+    border: 1px solid #3d5a73;
+    color: white;
     font-size: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    border-radius: 4px;
     transition: border-color 0.3s ease;
 }
-
-.form-group input[type="email"]:focus,
-.form-group input[type="password"]:focus {
-    border-color: #004170;
-    outline: none;
+.input-icon input,
+.login-button,
+.social-btn {
+    width: 100%;
+    box-sizing: border-box;
 }
-
-/* Recordarme */
-.remember-me {
-    display: flex;
-    align-items: center;
+.input-icon input:focus {
+    border-color: #F9C846;
+    background-color: #143e61;
+}
+input::placeholder {
+    color: #aab8c2;
+}
+.form-aux {
+    text-align: right;
+    margin-bottom: 1.5rem;
+}
+.form-aux a {
+    color: #F9C846;
     font-size: 0.85rem;
-}
-
-.remember-me input[type="checkbox"] {
-    margin-right: 0.5rem;
-}
-
-/* Enlace de "Olvidaste tu contraseña" */
-.forgot-password {
-    font-size: 0.85rem;
-    color: #0066cc;
     text-decoration: none;
 }
-
-.forgot-password:hover {
+.form-aux a:hover {
     text-decoration: underline;
 }
 
-/* Botón de envío */
-.button {
+.login-button {
     width: 100%;
     padding: 0.75rem;
-    font-size: 1rem;
-    background-color: #004170;
-    color: #ffffff;
+    background-color: #004884;
+    color: white;
     border: none;
-    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #003055;
-}
-
-/* Mensaje de estado */
-.status-message {
-    font-size: 0.9rem;
-    color: #38c172;
+    border-radius: 4px;
     margin-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+.login-button:hover {
+    background-color: #00325d;
+}
+
+.divider {
     text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin: 1rem 0;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.social-btn {
+    background: #fff;
+    color: #000;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.social-btn img {
+    height: 20px;
+    margin-right: 10px;
+}
+.social-btn.outlook {
+    background: #0072C6;
+    color: white;
+}
+.social-btn.outlook:hover {
+    background: #005a9e;
+}
+
+.signup-note {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+.signup-note a {
+    color: #F9C846;
+    text-decoration: none;
+}
+
+.govco-login-right {
+    width: 50%;
+    background: linear-gradient(135deg, #004884 0%, #005ea8 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 2rem;
+}
+
+.overlay-content {
+    max-width: 500px;
+    text-align: center;
+}
+
+.overlay-text h3 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.overlay-text .learn-more {
+    color: #F9C846;
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 0.95rem;
+}
+
+.overlay-image img {
+    margin-top: 2rem;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .govco-login-layout {
+        flex-direction: column;
+    }
+    .govco-login-left, .govco-login-right {
+        width: 100%;
+        height: auto;
+    }
+    .overlay-text {
+        position: static;
+        padding: 2rem;
+        text-align: center;
+    }
 }
 </style>
 @endsection

@@ -401,4 +401,18 @@ class MipgController extends Controller
         })->values();
         return response()->json($agrupado);
     }
+
+    public function toggleVisibility(Request $request, $id)
+    {
+        $file = Mipg::findOrFail($id);
+        if ($file->type === 'file') {
+            $file->is_visible = !$file->is_visible;
+            $file->save();
+            return response()->json([
+                'success' => true,
+                'is_visible' => $file->is_visible
+            ]);
+        }
+        return response()->json(['success' => false, 'message' => 'Solo se puede cambiar el estado de archivos'], 400);
+    }
 }

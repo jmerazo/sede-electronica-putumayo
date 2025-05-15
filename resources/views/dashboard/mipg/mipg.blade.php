@@ -426,6 +426,45 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error cargando dependencias:", error);
         });
 });
+
+let selectedNodeId = null;
+
+document.addEventListener('contextmenu', function (e) {
+    const item = e.target.closest('[data-id]');
+    if (item) {
+        selectedNodeId = item.dataset.id;
+    }
+});
+
+function toggleVisibilitySelected() {
+    document.getElementById('context-menu')?.classList.add('d-none');
+    if (!selectedNodeId) return;
+
+    fetch(`/dashboard/mipg/${selectedNodeId}/toggle-visibility`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            const badge = document.querySelector(`[data-id="visibility-${selectedNodeId}"]`);
+            if (badge) {
+                badge.textContent = data.is_visible ? 'Activo' : 'Inactivo';
+                badge.classList.toggle('active', data.is_visible);
+                badge.classList.toggle('inactive', !data.is_visible);
+            }
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Error al cambiar el estado.');
+    });
+}
 </script>
 @endpush
 
@@ -490,6 +529,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </li>
             <li onclick="assignAreaSelected()">
                 <span class="context-menu-icon">🏷️</span> Asignar área
+            </li>
+            <li onclick="toggleVisibilitySelected()">
+                <span class="context-menu-icon">👁️</span> Cambiar estado visibilidad
             </li>
         </ul>
     </div>

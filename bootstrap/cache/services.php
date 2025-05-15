@@ -36,13 +36,14 @@
     32 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     33 => 'Carbon\\Laravel\\ServiceProvider',
     34 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    35 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
-    36 => 'App\\Providers\\AppServiceProvider',
-    37 => 'App\\Providers\\AuthServiceProvider',
-    38 => 'App\\Providers\\EventServiceProvider',
-    39 => 'App\\Providers\\RouteServiceProvider',
-    40 => 'App\\Providers\\FortifyServiceProvider',
-    41 => 'App\\Providers\\JetstreamServiceProvider',
+    35 => 'SocialiteProviders\\Manager\\ServiceProvider',
+    36 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    37 => 'App\\Providers\\AppServiceProvider',
+    38 => 'App\\Providers\\AuthServiceProvider',
+    39 => 'App\\Providers\\EventServiceProvider',
+    40 => 'App\\Providers\\RouteServiceProvider',
+    41 => 'App\\Providers\\FortifyServiceProvider',
+    42 => 'App\\Providers\\JetstreamServiceProvider',
   ),
   'eager' => 
   array (
@@ -198,7 +199,7 @@
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
-    'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    'Laravel\\Socialite\\Contracts\\Factory' => 'SocialiteProviders\\Manager\\ServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
   ),
   'when' => 
@@ -246,6 +247,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'SocialiteProviders\\Manager\\ServiceProvider' => 
     array (
     ),
   ),

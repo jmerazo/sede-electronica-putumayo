@@ -16,7 +16,8 @@ class Mipg extends Model
         'file',
         'path',
         'extension',
-        'dependency_id'
+        'dependency_id',
+        'is_visible'
     ];
     public $timestamps = true;
 
